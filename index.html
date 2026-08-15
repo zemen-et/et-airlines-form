@@ -47,8 +47,6 @@
   .brand{display:flex; align-items:center; gap:12px;}
   .brand-logo{
     width:44px;height:44px;
-    background: conic-gradient(from 180deg, var(--et-red), var(--et-gold), var(--et-olive), var(--et-red));
-    border-radius:50%;
   }
   .brand-text{
     font-size:22px;
@@ -349,7 +347,11 @@
 
   <nav>
     <div class="brand">
-      <div class="brand-logo"></div>
+      <svg class="brand-logo" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 6 C42 6 52 16 54 30 C48 22 40 18 30 18 C20 18 12 22 6 30 C8 16 18 6 30 6 Z" fill="#2f5233"/>
+        <path d="M30 18 C40 18 48 22 54 30 C48 32 40 32 30 30 C20 32 12 32 6 30 C12 22 20 18 30 18 Z" fill="#e8b923"/>
+        <path d="M30 30 C40 32 48 32 54 30 C50 40 40 48 30 48 C20 48 10 40 6 30 C12 32 20 32 30 30 Z" fill="#c8102e"/>
+      </svg>
       <div class="brand-text">Ethiopian Airlines
         <small>CAREERS &amp; VACANCIES</small>
       </div>
