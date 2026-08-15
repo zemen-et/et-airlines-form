@@ -1,387 +1,738 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ethiopian Airlines | Careers & Vacancies</title>
-<style>
-  :root{
-    --et-green: #2f5233;
-    --et-olive: #6b7f2e;
-    --et-gold: #e8b923;
-    --et-red: #c8102e;
-    --bg-card: #f4f4f2;
-    --text-dark: #26301f;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    font-family: "Georgia", "Times New Roman", serif;
-    background:#ffffff;
-    color: var(--text-dark);
-    overflow-x:hidden;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ethiopian Airlines | Careers & Vacancies</title>
+    <style>
+      :root {
+        --et-green: #2f5233;
+        --et-olive: #6b7f2e;
+        --et-gold: #e8b923;
+        --et-red: #c8102e;
+        --bg-card: #f4f4f2;
+        --text-dark: #26301f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Georgia", "Times New Roman", serif;
+        background: #ffffff;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
 
-  .topbar{
-    background: var(--et-olive);
-    color:#fff;
-    font-size:13px;
-    padding:8px 40px;
-    display:flex;
-    gap:24px;
-    justify-content:flex-end;
-    font-family: Arial, sans-serif;
-    flex-wrap:wrap;
-  }
-  .topbar span{opacity:.95;}
+      .topbar {
+        background: var(--et-olive);
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 40px;
+        display: flex;
+        gap: 24px;
+        justify-content: flex-end;
+        font-family: Arial, sans-serif;
+        flex-wrap: wrap;
+      }
+      .topbar span {
+        opacity: 0.95;
+      }
 
-  nav{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:16px 40px;
-    border-bottom:1px solid #eee;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-  .brand{display:flex; align-items:flex-start; gap:8px;}
-  .brand-logo{
-    width:38px;
-    height:38px;
-    object-fit:contain;
-    margin-top:2px;
-  }
-  .brand-text{
-    font-size:24px;
-    font-weight:bold;
-    color:var(--et-red);
-    letter-spacing:.5px;
-    line-height:1;
-  }
-  .brand-text small{
-    display:block;
-    font-size:11px;
-    color:var(--et-olive);
-    font-weight:normal;
-    letter-spacing:1px;
-    margin-top:4px;
-    font-family:Arial, sans-serif;
-  }
-  .nav-links{
-    display:flex;
-    gap:26px;
-    font-family:Arial, sans-serif;
-    font-size:14px;
-    color:#333;
-    flex-wrap:wrap;
-  }
-  .nav-links a{color:#333; text-decoration:none; cursor:pointer;}
-  .nav-links a:hover{color:var(--et-red);}
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 40px;
+        border-bottom: 1px solid #eee;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .brand {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        margin-top: 2px;
+      }
+      .brand-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--et-red);
+        letter-spacing: 0.5px;
+        line-height: 1;
+      }
+      .brand-text small {
+        display: block;
+        font-size: 11px;
+        color: var(--et-olive);
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin-top: 4px;
+        font-family: Arial, sans-serif;
+      }
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        color: #333;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .nav-links a:hover {
+        color: var(--et-red);
+      }
+      .hamburger-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 6px;
+      }
 
-  .hero{
-    background:#fff;
-    padding:36px 40px 50px;
-  }
-  .hero-oval{
-    border-radius:200px;
-    overflow:hidden;
-    background:#dfe3d6;
-    width:100%;
-    aspect-ratio: 1584 / 291;
-    position:relative;
-  }
-  .hero-oval img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 30%;
-    display:block;
-  }
-  .hero-caption{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-top:18px;
-    flex-wrap:wrap;
-    gap:12px;
-  }
-  .hero-years-text{
-    font-family:"Georgia", serif;
-    font-style:italic;
-    font-size:52px;
-    color:#dde3cf;
-    letter-spacing:1px;
-  }
-  .hero-tagline{
-    font-family:Arial, sans-serif;
-    font-size:12px;
-    letter-spacing:3px;
-    color: var(--et-olive);
-    font-weight:bold;
-    margin-top:-10px;
-  }
-  .hero-logo{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:2px;
-  }
-  .hero-logo-feather{
-    width:70px;
-    height:auto;
-    transform:rotate(-8deg);
-  }
-  .hero-logo .num{
-    font-family:"Georgia", serif;
-    font-size:64px;
-    font-weight:bold;
-  }
-  .hero-logo .num.eight{color: var(--et-green);}
-  .hero-logo .num.zero{color: var(--et-gold);}
-  .hero-logo .sub{
-    font-family:Arial, sans-serif;
-    font-size:11px;
-    line-height:1.3;
-  }
-  .hero-logo .sub .year{color:#555; font-weight:bold;}
-  .hero-logo .sub .years-word{
-    font-family:"Georgia", serif;
-    font-style:italic;
-    font-size:20px;
-    color: var(--et-red);
-  }
+      .hero {
+        background: #fff;
+        padding: 36px 40px 50px;
+      }
+      .hero-oval {
+        border-radius: 200px;
+        overflow: hidden;
+        background: #dfe3d6;
+        width: 100%;
+        aspect-ratio: 1584 / 291;
+        position: relative;
+      }
+      .hero-media {
+        position: relative;
+      }
+      .hero-oval img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        display: block;
+      }
+      .hero-caption {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 18px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .hero-years-text {
+        font-family: "Georgia", serif;
+        font-style: italic;
+        font-size: 52px;
+        color: #dde3cf;
+        letter-spacing: 1px;
+      }
+      .hero-tagline {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: var(--et-olive);
+        font-weight: bold;
+        margin-top: -10px;
+      }
+      .hero-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2px;
+      }
+      .hero-logo-feather {
+        width: 70px;
+        height: auto;
+        transform: rotate(-8deg);
+      }
+      .hero-logo .num {
+        font-family: "Georgia", serif;
+        font-size: 64px;
+        font-weight: bold;
+      }
+      .hero-logo .num.eight {
+        color: var(--et-green);
+      }
+      .hero-logo .num.zero {
+        color: var(--et-gold);
+      }
+      .hero-logo .sub {
+        font-family: Arial, sans-serif;
+        font-size: 11px;
+        line-height: 1.3;
+      }
+      .hero-logo .sub .year {
+        color: #555;
+        font-weight: bold;
+      }
+      .hero-logo .sub .years-word {
+        font-family: "Georgia", serif;
+        font-style: italic;
+        font-size: 20px;
+        color: var(--et-red);
+      }
 
-  .section-title{
-    background: var(--bg-card);
-    border-left:5px solid var(--et-olive);
-    padding:18px 24px;
-    margin:50px 40px 20px;
-    font-size:22px;
-    color: var(--et-olive);
-    font-weight:bold;
-  }
+      .section-title {
+        background: var(--bg-card);
+        border-left: 5px solid var(--et-olive);
+        padding: 18px 24px;
+        margin: 50px 40px 20px;
+        font-size: 22px;
+        color: var(--et-olive);
+        font-weight: bold;
+      }
 
-  .jobs{
-    max-width:1000px;
-    margin:0 auto;
-    padding:0 40px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-  }
-  .job-row{
-    background: var(--bg-card);
-    border-radius:8px;
-    padding:20px 26px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    font-family:Arial, sans-serif;
-    font-size:14.5px;
-    line-height:1.9;
-  }
-  .job-row p{margin:0;}
-  .job-row .label{color:var(--et-olive); font-weight:bold;}
-  .job-row .value{color:#333;}
-  .job-row.clickable{cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; text-decoration:none; color:inherit; display:block;}
-  .job-row.clickable:hover{transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.1);}
-  .job-row .hint{
-    display:inline-block;
-    margin-top:4px;
-    font-size:12.5px;
-    color:var(--et-red);
-    font-weight:bold;
-  }
+      .follow-us {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        margin: 36px auto;
+      }
+      .follow-label {
+        color: var(--et-olive);
+        font-weight: bold;
+        font-size: 17px;
+      }
+      .social-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #6b6b6b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+      }
+      .social-icon svg {
+        width: 22px;
+        height: 22px;
+      }
+      .social-icon:hover {
+        background: var(--et-olive);
+      }
 
-  footer{
-    background: var(--text-dark);
-    color:#cfd6c4;
-    margin-top:60px;
-    padding:44px 40px 24px;
-    font-family:Arial, sans-serif;
-    font-size:13.5px;
-    display:flex;
-    gap:60px;
-    flex-wrap:wrap;
-  }
-  footer h4{color:#fff; margin-bottom:14px; font-size:14px;}
-  footer div p, footer div a{
-    display:block;
-    color:#b9c2ab;
-    text-decoration:none;
-    margin-bottom:8px;
-  }
-  .footer-bottom{
-    text-align:center;
-    padding:18px 0 0;
-    margin:24px 40px 0;
-    border-top:1px solid #3a4432;
-    color:#8a9478;
-    font-family:Arial, sans-serif;
-    font-size:12px;
-  }
+      .jobs {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .job-row {
+        background: var(--bg-card);
+        border-radius: 8px;
+        padding: 20px 26px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        font-family: Arial, sans-serif;
+        font-size: 14.5px;
+        line-height: 1.9;
+      }
+      .job-row p {
+        margin: 0;
+      }
+      .job-row .label {
+        color: var(--et-olive);
+        font-weight: bold;
+      }
+      .job-row .value {
+        color: #333;
+      }
+      .job-row.clickable {
+        cursor: pointer;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+      .job-row.clickable:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      }
+      .job-row .hint {
+        display: inline-block;
+        margin-top: 4px;
+        font-size: 12.5px;
+        color: var(--et-red);
+        font-weight: bold;
+      }
 
-  @media(max-width:900px){
-    .section-title{margin-left:20px; margin-right:20px; font-size:19px;}
-    .jobs{padding:0 20px;}
-    .hero{padding:28px 20px 40px;}
-  }
-  @media(max-width:680px){
-    .topbar{justify-content:center; gap:14px; font-size:11.5px; padding:10px 14px;}
-    nav{padding:14px 18px; flex-direction:column; align-items:flex-start;}
-    .nav-links{gap:16px; font-size:13px;}
-    .brand-text{font-size:20px;}
-    .hero-caption{flex-direction:column; align-items:flex-start; gap:16px;}
-    .hero-logo{align-items:flex-start;}
-    .hero-years-text{font-size:38px;}
-    .hero-logo .num{font-size:48px;}
-    footer{gap:32px; padding:36px 20px 20px;}
-    .footer-bottom{margin-left:20px; margin-right:20px;}
-  }
-  @media(max-width:420px){
-    .brand-text{font-size:17px;}
-    .brand-text small{font-size:9.5px;}
-    .hero-years-text{font-size:28px;}
-    .hero-logo .num{font-size:36px;}
-    .section-title{font-size:16px; padding:14px 16px;}
-    .job-row{font-size:13px;}
-    .topbar span{font-size:10.5px;}
-  }
-</style>
-</head>
-<body>
+      footer {
+        background: var(--text-dark);
+        color: #cfd6c4;
+        margin-top: 60px;
+        padding: 44px 40px 24px;
+        font-family: Arial, sans-serif;
+        font-size: 13.5px;
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+      footer h4 {
+        color: #fff;
+        margin-bottom: 14px;
+        font-size: 14px;
+      }
+      footer div p,
+      footer div a {
+        display: block;
+        color: #b9c2ab;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+      .footer-bottom {
+        text-align: center;
+        padding: 18px 0 0;
+        margin: 24px 40px 0;
+        border-top: 1px solid #3a4432;
+        color: #8a9478;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+      }
 
-  <div class="topbar">
-    <span>Ethiopian Skylight Hotel</span>
-    <span>Holidays</span>
-    <span>e-VISA</span>
-    <span>ShebaMiles</span>
-    <span>+251 116 179 900</span>
-  </div>
-
-  <nav>
-    <div class="brand">
-      <img class="brand-logo" src="assets/logo-feather.png" alt="Ethiopian Airlines logo">
-      <div class="brand-text">Ethiopian Airlines
-        <small>CAREERS &amp; VACANCIES</small>
-      </div>
+      @media (max-width: 900px) {
+        .section-title {
+          margin-left: 20px;
+          margin-right: 20px;
+          font-size: 19px;
+        }
+        .jobs {
+          padding: 0 20px;
+        }
+        .hero {
+          padding: 28px 20px 40px;
+        }
+      }
+      @media (max-width: 680px) {
+        .topbar {
+          display: none;
+        }
+        nav {
+          padding: 14px 18px;
+        }
+        .hamburger-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .nav-links {
+          display: none;
+          width: 100%;
+          flex-direction: column;
+          gap: 16px;
+          font-size: 15px;
+          margin-top: 14px;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .brand-text {
+          font-size: 20px;
+        }
+        .hero {
+          padding: 20px 20px 24px;
+        }
+        .hero-caption {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          flex-direction: row;
+          align-items: flex-end;
+          justify-content: space-between;
+          gap: 8px;
+          margin: 0;
+          padding: 10px 14px 8px;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0)
+          );
+        }
+        .hero-years-text {
+          font-size: 24px;
+          color: #f2f4ec;
+        }
+        .hero-tagline {
+          color: #f2f4ec;
+          margin-top: -4px;
+          font-size: 10px;
+        }
+        .hero-logo {
+          align-items: flex-end;
+        }
+        .hero-logo-feather {
+          width: 32px;
+        }
+        .hero-logo .num {
+          font-size: 24px;
+        }
+        .hero-logo .sub {
+          color: #f2f4ec;
+          font-size: 9px;
+        }
+        .hero-logo .sub .year {
+          color: #f2f4ec;
+        }
+        .hero-logo .sub .years-word {
+          font-size: 14px;
+        }
+        footer {
+          gap: 32px;
+          padding: 36px 20px 20px;
+        }
+        .footer-bottom {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+      @media (max-width: 420px) {
+        .brand-text {
+          font-size: 17px;
+        }
+        .brand-text small {
+          font-size: 9.5px;
+        }
+        .hero-years-text {
+          font-size: 28px;
+        }
+        .hero-logo .num {
+          font-size: 36px;
+        }
+        .section-title {
+          font-size: 16px;
+          padding: 14px 16px;
+        }
+        .job-row {
+          font-size: 13px;
+        }
+        .topbar span {
+          font-size: 10.5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span>Ethiopian Skylight Hotel</span>
+      <span>Holidays</span>
+      <span>e-VISA</span>
+      <span>ShebaMiles</span>
+      <span>+251 116 179 900</span>
     </div>
-    <div class="nav-links">
-      <a href="#openings">Local Openings</a>
-      <a href="vacancy.html">Cabin Crew Vacancy</a>
-      <a href="register.html">Register</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-oval">
-      <img src="assets/crew-photo.png" alt="Ethiopian Airlines crew">
-    </div>
-    <div class="hero-caption">
-      <div>
-        <div class="hero-years-text">years</div>
-        <div class="hero-tagline">A TIMELESS LEGACY</div>
-      </div>
-      <div class="hero-logo">
-        <img class="hero-logo-feather" src="assets/logo-feather.png" alt="">
-        <div style="display:flex; align-items:center; gap:4px;">
-          <span class="num eight">8</span><span class="num zero">0</span>
-          <span class="sub"><span class="year">1946 – 2026</span><br><span class="years-word">years</span></span>
+    <nav>
+      <div class="brand">
+        <img
+          class="brand-logo"
+          src="assets/logo-feather.png"
+          alt="Ethiopian Airlines logo"
+        />
+        <div class="brand-text">
+          Ethiopian Airlines
+          <small>CAREERS &amp; VACANCIES</small>
         </div>
       </div>
-    </div>
-  </section>
+      <button
+        class="hamburger-btn"
+        id="hamburgerBtn"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <svg viewBox="0 0 24 24" width="22" height="22">
+          <path fill="#333" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z" />
+        </svg>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <a href="#openings">Local Openings</a>
+        <a href="vacancy.html">Cabin Crew Vacancy</a>
+        <a href="register.html">Register</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
 
-  <h2 class="section-title" id="openings">Local Job Openings</h2>
+    <section class="hero">
+      <div class="hero-media">
+        <div class="hero-oval">
+          <img src="assets/crew-photo.png" alt="Ethiopian Airlines crew" />
+        </div>
+        <div class="hero-caption">
+          <div>
+            <div class="hero-years-text">years</div>
+            <div class="hero-tagline">A TIMELESS LEGACY</div>
+          </div>
+          <div class="hero-logo">
+            <img
+              class="hero-logo-feather"
+              src="assets/logo-feather.png"
+              alt=""
+            />
+            <div style="display: flex; align-items: center; gap: 4px">
+              <span class="num eight">8</span><span class="num zero">0</span>
+              <span class="sub"
+                ><span class="year">1946 – 2026</span><br /><span
+                  class="years-word"
+                  >years</span
+                ></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <div class="jobs">
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Data Science for Aviation Management</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
+    <h2 class="section-title" id="openings">Local Job Openings</h2>
+
+    <div class="follow-us">
+      <span class="follow-label">Follow Us</span>
+      <a href="#" aria-label="Facebook" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#fff">
+          <path
+            d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 3.9-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12Z"
+          />
+        </svg>
+      </a>
+      <a href="#" aria-label="YouTube" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#fff">
+          <path
+            d="M23 12s0-3.6-.5-5.3c-.3-1-1-1.8-2-2C18.7 4.2 12 4.2 12 4.2s-6.7 0-8.5.5c-1 .2-1.7 1-2 2C1 8.4 1 12 1 12s0 3.6.5 5.3c.3 1 1 1.8 2 2 1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5c1-.2 1.7-1 2-2 .5-1.7.5-5.3.5-5.3ZM9.8 15.5V8.5L15.8 12l-6 3.5Z"
+          />
+        </svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" class="social-icon">
+        <svg viewBox="0 0 24 24" fill="#fff">
+          <path
+            d="M20.4 3H3.6A.6.6 0 0 0 3 3.6v16.8a.6.6 0 0 0 .6.6h16.8a.6.6 0 0 0 .6-.6V3.6a.6.6 0 0 0-.6-.6ZM8.3 18.3H5.7V9.9h2.6v8.4ZM7 8.8a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm11.3 9.5h-2.6v-4.1c0-1 0-2.2-1.4-2.2s-1.6 1.1-1.6 2.2v4.1H10V9.9h2.5v1.1h.1c.3-.6 1.2-1.4 2.5-1.4 2.7 0 3.2 1.8 3.2 4v4.7Z"
+          />
+        </svg>
+      </a>
     </div>
 
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Digital Electronics and Microprocessors</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
+    <div class="jobs">
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Data Science for Aviation Management</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Digital Electronics and Microprocessors</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value">Adjunct Professor of Engineering Drawing I</span>
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Engineering Mechanics II</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <a class="job-row clickable" href="vacancy.html">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Cabin Crew / Air Hostess (ET Sponsored Trainee)</span
+          >
+        </p>
+        <p>
+          <span class="label">Location :</span>
+          <span class="value">Different Locations</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Open</span>
+        </p>
+        <span class="hint">Click to view vacancy details →</span>
+      </a>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value">Adjunct Professor of General Psychology</span>
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Introduction to Aeronautical Engineering</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Introduction to Aeronautical Science</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Introduction to Economics</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
+
+      <div class="job-row">
+        <p>
+          <span class="label">Position :</span>
+          <span class="value"
+            >Adjunct Professor of Introduction to Emerging Technology</span
+          >
+        </p>
+        <p>
+          <span class="label">Email :</span>
+          <span class="value">eauhr@ethiopianairlines.com</span>
+        </p>
+        <p>
+          <span class="label">Registration Date :</span>
+          <span class="value">Aug 17, 2025 – Aug 28, 2026</span>
+        </p>
+      </div>
     </div>
 
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Engineering Drawing I</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
+    <footer id="contact">
+      <div>
+        <h4>Contact Us</h4>
+        <p>Call Center Numbers</p>
+        <p>+251 116 179 900</p>
+        <a href="#">Download Mobile App</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="#">Ethiopian Affiliate Program</a>
+        <a href="#">About Ethiopian</a>
+        <a href="#">Media</a>
+      </div>
+      <div>
+        <h4>Ethiopian Group</h4>
+        <a href="#">Corporate</a>
+        <a href="#">Ethiopian Aviation University</a>
+        <a href="#">Ethiopian Cargo and Logistics</a>
+      </div>
+      <div>
+        <h4>Application Forms</h4>
+        <a href="register.html">Sales &amp; Marketing Training</a>
+        <a href="register.html">Aircraft Maintenance Training</a>
+        <a href="vacancy.html">Cabin Crew / Air Hostess</a>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      © 2026 Ethiopian Airlines — Student project, for academic use only
+      (Computer Graphics assignment)
     </div>
 
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Engineering Mechanics II</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-
-    <a class="job-row clickable" href="vacancy.html">
-      <p><span class="label">Position :</span> <span class="value">Cabin Crew / Air Hostess (ET Sponsored Trainee)</span></p>
-      <p><span class="label">Location :</span> <span class="value">Different Locations</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Open</span></p>
-      <span class="hint">Click to view vacancy details →</span>
-    </a>
-
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of General Psychology</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Aeronautical Engineering</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Aeronautical Science</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Economics</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-
-    <div class="job-row">
-      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Emerging Technology</span></p>
-      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
-    </div>
-  </div>
-
-  <footer id="contact">
-    <div>
-      <h4>Contact Us</h4>
-      <p>Call Center Numbers</p>
-      <p>+251 116 179 900</p>
-      <a href="#">Download Mobile App</a>
-    </div>
-    <div>
-      <h4>Information</h4>
-      <a href="#">Ethiopian Affiliate Program</a>
-      <a href="#">About Ethiopian</a>
-      <a href="#">Media</a>
-    </div>
-    <div>
-      <h4>Ethiopian Group</h4>
-      <a href="#">Corporate</a>
-      <a href="#">Ethiopian Aviation University</a>
-      <a href="#">Ethiopian Cargo and Logistics</a>
-    </div>
-    <div>
-      <h4>Application Forms</h4>
-      <a href="register.html">Sales &amp; Marketing Training</a>
-      <a href="register.html">Aircraft Maintenance Training</a>
-      <a href="vacancy.html">Cabin Crew / Air Hostess</a>
-    </div>
-  </footer>
-  <div class="footer-bottom">© 2026 Ethiopian Airlines — Student project, for academic use only (Computer Graphics assignment)</div>
-
-</body>
+    <script>
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const navLinks = document.getElementById("navLinks");
+      hamburgerBtn.addEventListener("click", function () {
+        const isOpen = navLinks.classList.toggle("open");
+        hamburgerBtn.setAttribute("aria-expanded", isOpen);
+      });
+      navLinks.addEventListener("click", function (e) {
+        if (e.target.tagName === "A") {
+          navLinks.classList.remove("open");
+          hamburgerBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+    </script>
+  </body>
 </html>
