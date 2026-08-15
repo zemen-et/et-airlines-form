@@ -82,17 +82,16 @@
   .hero-oval{
     border-radius:200px;
     overflow:hidden;
-    background: linear-gradient(180deg, #dfe3d6 0%, #c9cfba 100%);
+    background:#dfe3d6;
     height:320px;
-    display:flex;
-    align-items:flex-end;
-    justify-content:space-evenly;
-    padding:0 20px;
     position:relative;
   }
-  .crew-figure{
-    width:11%;
-    max-width:110px;
+  .hero-oval img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    display:block;
   }
   .hero-caption{
     display:flex;
@@ -365,14 +364,7 @@
 
   <section class="hero">
     <div class="hero-oval">
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="30" rx="20" ry="24" fill="#5b4636"/><path d="M15 210 L20 110 Q50 90 80 110 L85 210 Z" fill="#c9a86a"/><rect x="42" y="120" width="16" height="70" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="30" rx="19" ry="23" fill="#4a3626"/><path d="M16 210 L21 108 Q50 88 79 108 L84 210 Z" fill="#d1af74"/><rect x="42" y="118" width="16" height="72" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="28" rx="20" ry="24" fill="#3f2c1e"/><path d="M15 208 L20 106 Q50 86 80 106 L85 208 Z" fill="#c9a86a"/><rect x="42" y="116" width="16" height="72" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="32" rx="18" ry="23" fill="#2e2013"/><path d="M17 212 L22 112 Q50 94 78 112 L83 212 Z" fill="#d6b57d"/><rect x="43" y="122" width="14" height="70" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="30" rx="20" ry="24" fill="#5b4636"/><path d="M15 210 L20 110 Q50 90 80 110 L85 210 Z" fill="#c9a86a"/><rect x="42" y="120" width="16" height="70" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="28" rx="19" ry="23" fill="#4a3626"/><path d="M16 208 L21 106 Q50 86 79 106 L84 208 Z" fill="#d1af74"/><rect x="42" y="116" width="16" height="72" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="30" rx="20" ry="24" fill="#3f2c1e"/><path d="M15 210 L20 110 Q50 90 80 110 L85 210 Z" fill="#c9a86a"/><rect x="42" y="120" width="16" height="70" fill="#1f3b2c"/></svg>
-      <svg class="crew-figure" viewBox="0 0 100 220" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="32" rx="18" ry="23" fill="#2e2013"/><path d="M17 212 L22 112 Q50 94 78 112 L83 212 Z" fill="#d6b57d"/><rect x="43" y="122" width="14" height="70" fill="#1f3b2c"/></svg>
+      <img src="assets/crew-photo.png" alt="Ethiopian Airlines crew">
     </div>
     <div class="hero-caption">
       <div>
