@@ -210,10 +210,10 @@
     <div id="loginScreen">
       <h2>Admin Login</h2>
       <p>Ethiopian Airlines — Careers &amp; Vacancies Admin Panel</p>
-      <input type="text" id="loginUsername" placeholder="Username" />
+      <input type="email" id="loginEmail" placeholder="Admin email" />
       <input type="password" id="loginPassword" placeholder="Password" />
       <button onclick="doLogin()">Log In</button>
-      <div id="loginError">Invalid username or password. Try again.</div>
+      <div id="loginError">Invalid email or password. Try again.</div>
     </div>
 
     <div id="dashboard">
@@ -272,6 +272,7 @@
     </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
     <script>
       const firebaseConfig = {
@@ -283,40 +284,34 @@
         appId: "1:666778669594:web:5f4db9e4a0a37e87a537a3",
       };
       firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
       const db = firebase.firestore();
-
-      const ADMIN_USERNAME = "enuhe";
-      const ADMIN_PASSWORD = "a1b2c3d4@#$";
 
       let allApps = [];
 
-      if (sessionStorage.getItem("et_admin_logged_in") === "true") {
-        showDashboard();
-      }
+      auth.onAuthStateChanged(function (user) {
+        if (user) {
+          document.getElementById("loginScreen").style.display = "none";
+          document.getElementById("dashboard").style.display = "block";
+          loadApplications();
+        } else {
+          document.getElementById("loginScreen").style.display = "block";
+          document.getElementById("dashboard").style.display = "none";
+        }
+      });
 
       function doLogin() {
-        const username = document.getElementById("loginUsername").value;
+        const email = document.getElementById("loginEmail").value;
         const password = document.getElementById("loginPassword").value;
         document.getElementById("loginError").style.display = "none";
-
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-          sessionStorage.setItem("et_admin_logged_in", "true");
-          showDashboard();
-        } else {
+        auth.signInWithEmailAndPassword(email, password).catch(function (err) {
           document.getElementById("loginError").style.display = "block";
-        }
+          console.error(err);
+        });
       }
 
       function doLogout() {
-        sessionStorage.removeItem("et_admin_logged_in");
-        document.getElementById("loginScreen").style.display = "block";
-        document.getElementById("dashboard").style.display = "none";
-      }
-
-      function showDashboard() {
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-        loadApplications();
+        auth.signOut();
       }
 
       async function loadApplications() {
@@ -333,7 +328,7 @@
           updateStats();
         } catch (err) {
           alert(
-            "Could not load applications. Make sure Firestore rules allow read access.\n" +
+            "Could not load applications. Make sure Firestore rules allow authenticated reads.\n" +
               err.message
           );
           console.error(err);
