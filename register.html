@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethiopian Airlines | Application Form</title>
+<style>
+  :root{
+    --et-green: #2f5233;
+    --et-olive: #6b7f2e;
+    --et-gold: #e8b923;
+    --et-red: #c8102e;
+    --bg-card: #f4f4f2;
+    --text-dark: #26301f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Georgia","Times New Roman",serif; background:#fff; color:var(--text-dark); overflow-x:hidden;}
+  .topbar{background:var(--et-olive); color:#fff; font-size:13px; padding:8px 40px; display:flex; gap:24px; justify-content:flex-end; font-family:Arial,sans-serif; flex-wrap:wrap;}
+  nav{display:flex; align-items:center; justify-content:space-between; padding:16px 40px; border-bottom:1px solid #eee; flex-wrap:wrap; gap:12px;}
+  .brand{display:flex; align-items:flex-start; gap:8px;}
+  .brand-logo{width:38px; height:38px; object-fit:contain; margin-top:2px;}
+  .brand-text{font-size:24px; font-weight:bold; color:var(--et-red); letter-spacing:.5px; line-height:1;}
+  .brand-text small{display:block; font-size:11px; color:var(--et-olive); font-weight:normal; letter-spacing:1px; margin-top:4px; font-family:Arial,sans-serif;}
+  .nav-links{display:flex; gap:26px; font-family:Arial,sans-serif; font-size:14px; color:#333; flex-wrap:wrap;}
+  .nav-links a{color:#333; text-decoration:none;}
+  .nav-links a:hover{color:var(--et-red);}
+
+  .back-link{
+    display:inline-block;
+    margin:24px 40px 0;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    color:var(--et-olive);
+    text-decoration:none;
+  }
+  .back-link:hover{color:var(--et-red);}
+
+  .notice-box{background:#eef1e8; border:1px solid #d7dcc9; border-radius:6px; padding:18px 20px; color:#333; font-size:13px;}
+  .notice-box strong{display:block; margin-bottom:10px; color:var(--et-green);}
+  .notice-box ul{margin-left:18px; line-height:1.6;}
+
+  .form-wrap{
+    max-width:1000px;
+    margin:20px auto 40px;
+    background: var(--et-green);
+    border-radius:10px;
+    padding:40px;
+    color:#fff;
+  }
+  .form-wrap h2{font-size:24px; margin-bottom:6px;}
+  .form-wrap p{font-family:Arial,sans-serif; font-size:13.5px; color:#d8e0cf; margin-bottom:28px;}
+  form{display:grid; grid-template-columns:1fr 1fr; gap:18px 24px; font-family:Arial,sans-serif;}
+  form .full{grid-column:1 / -1;}
+  label{display:block; font-size:13px; margin-bottom:6px; color:#eef0e5;}
+  input, select, textarea{width:100%; padding:11px 12px; border-radius:5px; border:none; font-size:14px; font-family:Arial,sans-serif; background:#fff; color:#222;}
+  textarea{resize:vertical; min-height:80px;}
+  .submit-btn{grid-column:1 / -1; justify-self:start; background:var(--et-gold); color:var(--et-green); border:none; font-weight:bold; padding:13px 32px; border-radius:24px; font-size:14px; cursor:pointer; margin-top:8px; transition:opacity .15s ease;}
+  .submit-btn:hover{opacity:.88;}
+  .confirm-msg{grid-column:1/-1; display:none; background:rgba(232,185,35,0.18); border:1px solid var(--et-gold); padding:12px 16px; border-radius:6px; font-size:13.5px;}
+
+  footer{background:var(--text-dark); color:#cfd6c4; margin-top:60px; padding:44px 40px 24px; font-family:Arial,sans-serif; font-size:13.5px; display:flex; gap:60px; flex-wrap:wrap;}
+  footer h4{color:#fff; margin-bottom:14px; font-size:14px;}
+  footer div p, footer div a{display:block; color:#b9c2ab; text-decoration:none; margin-bottom:8px;}
+  .footer-bottom{text-align:center; padding:18px 0 0; margin:24px 40px 0; border-top:1px solid #3a4432; color:#8a9478; font-family:Arial,sans-serif; font-size:12px;}
+
+  @media(max-width:900px){
+    .form-wrap, .back-link{margin-left:20px; margin-right:20px;}
+  }
+  @media(max-width:680px){
+    .topbar{justify-content:center; gap:14px; font-size:11.5px; padding:10px 14px;}
+    nav{padding:14px 18px; flex-direction:column; align-items:flex-start;}
+    .nav-links{gap:16px; font-size:13px;}
+    .brand-text{font-size:20px;}
+    form{grid-template-columns:1fr;}
+    .form-wrap{padding:22px 18px;}
+    footer{gap:32px; padding:36px 20px 20px;}
+    .footer-bottom{margin-left:20px; margin-right:20px;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>Ethiopian Skylight Hotel</span>
+    <span>Holidays</span>
+    <span>e-VISA</span>
+    <span>ShebaMiles</span>
+    <span>+251 116 179 900</span>
+  </div>
+
+  <nav>
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo-feather.png" alt="Ethiopian Airlines logo">
+      <div class="brand-text">Ethiopian Airlines
+        <small>CAREERS &amp; VACANCIES</small>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="index.html#openings">Local Openings</a>
+      <a href="vacancy.html">Cabin Crew Vacancy</a>
+      <a href="register.html">Register</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+  </nav>
+
+  <a class="back-link" href="index.html#openings">← Back to Local Job Openings</a>
+
+  <div class="form-wrap">
+    <h2>Application Form for Local Applicants</h2>
+    <p>Fields marked with the position dropdown reflect the openings listed on the careers page.</p>
+    <form id="regForm">
+      <div>
+        <label for="school">Training School</label>
+        <select id="school" required>
+          <option value="">--Select Your School--</option>
+          <option>Adama Science and Technology University, Adama</option>
+          <option>Addis Ababa, Online</option>
+          <option>Ambo University, Ambo</option>
+          <option>Arbaminch University, Arbaminch</option>
+          <option>Bahir Dar University, Bahir Dar</option>
+          <option>Jimma University, Jimma</option>
+          <option>Hawassa Airport, Hawassa</option>
+          <option>University of Gondar, Gondar</option>
+        </select>
+      </div>
+      <div>
+        <label for="program">Training Programs</label>
+        <select id="program" required>
+          <option value="">--Select Your Course--</option>
+          <option>ET Sponsored Trainee Cabin Crew</option>
+          <option>Cabin Crew / Air Hostess</option>
+          <option>Adjunct Professor of Data Science for Aviation Management</option>
+          <option>Adjunct Professor of Digital Electronics and Microprocessors</option>
+          <option>Adjunct Professor of Engineering Drawing I</option>
+          <option>Adjunct Professor of Engineering Mechanics II</option>
+          <option>Adjunct Professor of General Psychology</option>
+          <option>Adjunct Professor of Introduction to Aeronautical Engineering</option>
+          <option>Adjunct Professor of Introduction to Aeronautical Science</option>
+          <option>Adjunct Professor of Introduction to Economics</option>
+          <option>Adjunct Professor of Introduction to Emerging Technology</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" required placeholder="First Name">
+      </div>
+      <div>
+        <label for="mname">Middle Name</label>
+        <input type="text" id="mname" placeholder="Middle Name">
+      </div>
+      <div>
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" required placeholder="Last Name">
+      </div>
+
+      <div>
+        <label for="gender">Gender</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option>Female</option>
+          <option>Male</option>
+        </select>
+      </div>
+      <div>
+        <label for="city">Physical Location (City)</label>
+        <input type="text" id="city" required placeholder="City">
+      </div>
+
+      <div class="full">
+        <label>Birth Date (G.C.)</label>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <select id="dobDay" required style="flex:1; min-width:80px;">
+            <option value="">Day</option>
+            <script>document.write(Array.from({length:31},(_,i)=>`<option>${i+1}</option>`).join(''))</script>
+          </select>
+          <select id="dobMonth" required style="flex:2; min-width:120px;">
+            <option value="">Month</option>
+            <option>January</option><option>February</option><option>March</option><option>April</option>
+            <option>May</option><option>June</option><option>July</option><option>August</option>
+            <option>September</option><option>October</option><option>November</option><option>December</option>
+          </select>
+          <select id="dobYear" required style="flex:1; min-width:90px;">
+            <option value="">Year</option>
+            <script>document.write(Array.from({length:30},(_,i)=>`<option>${2008-i}</option>`).join(''))</script>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" required placeholder="Phone number">
+      </div>
+      <div>
+        <label for="altphone">Alternative Phone Number (optional)</label>
+        <input type="tel" id="altphone" placeholder="Other phone number (optional)">
+      </div>
+
+      <div>
+        <label for="nationality">Nationality</label>
+        <select id="nationality">
+          <option>Ethiopian</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Personal Email">
+      </div>
+
+      <div class="full">
+        <label for="source">Where did you get the Announcement?</label>
+        <select id="source" required>
+          <option value="">Select</option>
+          <option>Ethiopian Airlines Website</option>
+          <option>Social Media</option>
+          <option>Friend / Family</option>
+          <option>University Notice Board</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="edu">Educational Background</label>
+        <select id="edu" required>
+          <option value="">Select</option>
+          <option>Grade 12 Complete</option>
+          <option>Diploma</option>
+          <option>Bachelor's Degree</option>
+          <option>Master's Degree</option>
+        </select>
+      </div>
+      <div>
+        <label for="field">Field of Study</label>
+        <input type="text" id="field" placeholder="Field of study">
+      </div>
+
+      <div>
+        <label for="kebele">Renewed Kebele ID</label>
+        <input type="file" id="kebele" required>
+      </div>
+      <div>
+        <label for="certs">Educational Certificates and Birth Certificate</label>
+        <input type="file" id="certs" required multiple>
+      </div>
+
+      <div class="full notice-box">
+        <strong>Before Submitting Your Application Please Read Carefully the Below Notice:</strong>
+        <ul>
+          <li>Make sure you submitted/attached all credentials required for registration. Otherwise, your application will be invalid or declined.</li>
+          <li>Before submitting, please read the entry requirements and make sure you fulfil all the requirements listed.</li>
+          <li>Updates regarding the pre-admission process will be released on our website — check regularly.</li>
+          <li>If your physical presence is required, come only on the stated date and time, fulfilling the necessary requirements.</li>
+          <li>Proper grooming and attire is required at all times.</li>
+          <li>All information given must be true. False information found at any stage leads to termination from the process or employment upon discovery.</li>
+          <li>Training may be delivered virtually — ensure you have internet access, Microsoft Teams, and a laptop/PC.</li>
+          <li>Training does not entitle you to employment; Ethiopian Airlines has no obligation to employ or place you afterward.</li>
+        </ul>
+      </div>
+
+      <button type="submit" class="submit-btn">Submit</button>
+      <div class="confirm-msg" id="confirmMsg">✓ Application submitted successfully. Redirecting you to the job openings list...</div>
+    </form>
+  </div>
+
+  <footer id="contact">
+    <div>
+      <h4>Contact Us</h4>
+      <p>Call Center Numbers</p>
+      <p>+251 116 179 900</p>
+      <a href="#">Download Mobile App</a>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <a href="#">Ethiopian Affiliate Program</a>
+      <a href="#">About Ethiopian</a>
+      <a href="#">Media</a>
+    </div>
+    <div>
+      <h4>Ethiopian Group</h4>
+      <a href="#">Corporate</a>
+      <a href="#">Ethiopian Aviation University</a>
+      <a href="#">Ethiopian Cargo and Logistics</a>
+    </div>
+    <div>
+      <h4>Application Forms</h4>
+      <a href="register.html">Sales &amp; Marketing Training</a>
+      <a href="register.html">Aircraft Maintenance Training</a>
+      <a href="vacancy.html">Cabin Crew / Air Hostess</a>
+    </div>
+  </footer>
+  <div class="footer-bottom">© 2026 Ethiopian Airlines — Student project, for academic use only (Computer Graphics assignment)</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBmHnbVpJa8yZqF_IqtpPuTkBqNxDFD_Ms",
+    authDomain: "airlines-form.firebaseapp.com",
+    projectId: "airlines-form",
+    storageBucket: "airlines-form.firebasestorage.app",
+    messagingSenderId: "666778669594",
+    appId: "1:666778669594:web:5f4db9e4a0a37e87a537a3"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+
+<script>
+  document.getElementById('regForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const submitBtn = this.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    const application = {
+      trainingSchool: document.getElementById('school').value,
+      trainingProgram: document.getElementById('program').value,
+      firstName: document.getElementById('fname').value,
+      middleName: document.getElementById('mname').value,
+      lastName: document.getElementById('lname').value,
+      gender: document.getElementById('gender').value,
+      city: document.getElementById('city').value,
+      dobDay: document.getElementById('dobDay').value,
+      dobMonth: document.getElementById('dobMonth').value,
+      dobYear: document.getElementById('dobYear').value,
+      phone: document.getElementById('phone').value,
+      altPhone: document.getElementById('altphone').value,
+      nationality: document.getElementById('nationality').value,
+      email: document.getElementById('email').value,
+      source: document.getElementById('source').value,
+      education: document.getElementById('edu').value,
+      fieldOfStudy: document.getElementById('field').value,
+      submittedAt: new Date().toISOString()
+    };
+
+    try {
+      await db.collection('applications').add(application);
+      document.getElementById('confirmMsg').style.display = 'block';
+      this.reset();
+      setTimeout(function(){
+        window.location.href = 'index.html#openings';
+      }, 1800);
+    } catch (err) {
+      alert('Something went wrong submitting your application. Please try again.\n' + err.message);
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -20,9 +20,7 @@
     color: var(--text-dark);
     overflow-x:hidden;
   }
-  .toggle-section{display:none;}
 
-  /* Top utility bar */
   .topbar{
     background: var(--et-olive);
     color:#fff;
@@ -36,7 +34,6 @@
   }
   .topbar span{opacity:.95;}
 
-  /* Nav */
   nav{
     display:flex;
     align-items:center;
@@ -46,10 +43,12 @@
     flex-wrap:wrap;
     gap:12px;
   }
-  .brand{display:flex; align-items:flex-start; gap:2px; position:relative;}
+  .brand{display:flex; align-items:flex-start; gap:8px;}
   .brand-logo{
-    width:36px;height:22px;
-    margin-top:-6px;
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    margin-top:2px;
   }
   .brand-text{
     font-size:24px;
@@ -78,7 +77,6 @@
   .nav-links a{color:#333; text-decoration:none; cursor:pointer;}
   .nav-links a:hover{color:var(--et-red);}
 
-  /* Hero */
   .hero{
     background:#fff;
     padding:36px 40px 50px;
@@ -128,8 +126,9 @@
     gap:2px;
   }
   .hero-logo-feather{
-    width:64px;
-    height:32px;
+    width:70px;
+    height:auto;
+    transform:rotate(-8deg);
   }
   .hero-logo .num{
     font-family:"Georgia", serif;
@@ -151,7 +150,6 @@
     color: var(--et-red);
   }
 
-  /* Section titles */
   .section-title{
     background: var(--bg-card);
     border-left:5px solid var(--et-olive);
@@ -162,7 +160,6 @@
     font-weight:bold;
   }
 
-  /* Job list - plain rows, not boxed */
   .jobs{
     max-width:1000px;
     margin:0 40px;
@@ -177,7 +174,7 @@
   .job-row p{margin:0;}
   .job-row .label{color:var(--et-olive); font-weight:bold;}
   .job-row .value{color:#333;}
-  .job-row.clickable{cursor:pointer; transition:background .15s ease;}
+  .job-row.clickable{cursor:pointer; transition:background .15s ease; text-decoration:none; color:inherit; display:block;}
   .job-row.clickable:hover{background:#fafaf7;}
   .job-row .hint{
     display:inline-block;
@@ -187,127 +184,6 @@
     font-weight:bold;
   }
 
-  /* Vacancy detail box */
-  .vacancy-box{
-    max-width:1000px;
-    margin:0 40px;
-    background:#fff;
-    border:1px solid #e7e7e2;
-    border-radius:8px;
-    padding:26px 30px;
-    font-family:Arial, sans-serif;
-  }
-  .vacancy-top{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    margin-bottom:20px;
-    padding-bottom:18px;
-    border-bottom:2px solid var(--et-green);
-    font-size:14.5px;
-  }
-  .vacancy-top .field{display:flex; gap:6px;}
-  .vacancy-top .label{color:var(--et-olive); font-weight:bold;}
-  .vacancy-list, .vacancy-locations{
-    margin:0 0 18px 20px;
-    font-size:14px;
-    line-height:1.7;
-    color:#333;
-  }
-  .vacancy-sub{font-weight:bold; color:var(--et-olive); margin-bottom:8px;}
-  .vacancy-nb{font-size:13.5px; color:#555; line-height:1.6; margin-bottom:16px;}
-  .apply-link{
-    display:inline-block;
-    color: var(--et-olive);
-    font-weight:bold;
-    text-decoration:none;
-    border-bottom:2px solid var(--et-gold);
-    padding-bottom:2px;
-    cursor:pointer;
-  }
-  .apply-link:hover{color:var(--et-red);}
-
-  /* Notice box inside form */
-  .notice-box{
-    background:#eef1e8;
-    border:1px solid #d7dcc9;
-    border-radius:6px;
-    padding:18px 20px;
-    color:#333;
-    font-size:13px;
-  }
-  .notice-box strong{display:block; margin-bottom:10px; color:var(--et-green);}
-  .notice-box ul{margin-left:18px; line-height:1.6;}
-
-  /* Registration form */
-  .form-wrap{
-    max-width:1000px;
-    margin:60px 40px 20px;
-    background: var(--et-green);
-    border-radius:10px;
-    padding:40px;
-    color:#fff;
-  }
-  .form-wrap h2{
-    font-size:24px;
-    margin-bottom:6px;
-  }
-  .form-wrap p{
-    font-family:Arial, sans-serif;
-    font-size:13.5px;
-    color:#d8e0cf;
-    margin-bottom:28px;
-  }
-  form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px 24px;
-    font-family:Arial, sans-serif;
-  }
-  form .full{grid-column:1 / -1;}
-  label{
-    display:block;
-    font-size:13px;
-    margin-bottom:6px;
-    color:#eef0e5;
-  }
-  input, select, textarea{
-    width:100%;
-    padding:11px 12px;
-    border-radius:5px;
-    border:none;
-    font-size:14px;
-    font-family:Arial, sans-serif;
-    background:#fff;
-    color:#222;
-  }
-  textarea{resize:vertical; min-height:80px;}
-  .submit-btn{
-    grid-column:1 / -1;
-    justify-self:start;
-    background: var(--et-gold);
-    color: var(--et-green);
-    border:none;
-    font-weight:bold;
-    padding:13px 32px;
-    border-radius:24px;
-    font-size:14px;
-    cursor:pointer;
-    margin-top:8px;
-    transition:opacity .15s ease;
-  }
-  .submit-btn:hover{opacity:.88;}
-  .confirm-msg{
-    grid-column:1/-1;
-    display:none;
-    background:rgba(232,185,35,0.18);
-    border:1px solid var(--et-gold);
-    padding:12px 16px;
-    border-radius:6px;
-    font-size:13.5px;
-  }
-
-  /* Footer */
   footer{
     background: var(--text-dark);
     color:#cfd6c4;
@@ -336,10 +212,9 @@
     font-size:12px;
   }
 
-  /* Responsive */
   @media(max-width:900px){
     .section-title{margin-left:20px; margin-right:20px; font-size:19px;}
-    .jobs, .vacancy-box, .form-wrap{margin-left:20px; margin-right:20px;}
+    .jobs{margin-left:20px; margin-right:20px;}
     .hero{padding:28px 20px 40px;}
   }
   @media(max-width:680px){
@@ -351,8 +226,6 @@
     .hero-logo{align-items:flex-start;}
     .hero-years-text{font-size:38px;}
     .hero-logo .num{font-size:48px;}
-    form{grid-template-columns:1fr;}
-    .form-wrap, .vacancy-box{padding:22px 18px;}
     footer{gap:32px; padding:36px 20px 20px;}
     .footer-bottom{margin-left:20px; margin-right:20px;}
   }
@@ -363,7 +236,6 @@
     .hero-logo .num{font-size:36px;}
     .section-title{font-size:16px; padding:14px 16px;}
     .job-row{font-size:13px;}
-    .submit-btn{width:100%; text-align:center;}
     .topbar span{font-size:10.5px;}
   }
 </style>
@@ -380,19 +252,15 @@
 
   <nav>
     <div class="brand">
-      <svg class="brand-logo" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-        <path d="M5 55 C20 40 40 20 70 8 C80 4 90 3 98 5 C85 10 65 20 45 35 C25 50 12 56 5 55 Z" fill="#2f5233"/>
-        <path d="M12 50 C25 38 42 22 68 11 C77 8 88 6 98 5 C85 12 63 24 45 38 C28 50 18 52 12 50 Z" fill="#e8b923"/>
-        <path d="M20 44 C30 35 45 24 65 15 C73 12 85 9 98 5 C86 14 63 27 48 40 C35 49 26 47 20 44 Z" fill="#c8102e"/>
-      </svg>
+      <img class="brand-logo" src="assets/logo-feather.png" alt="Ethiopian Airlines logo">
       <div class="brand-text">Ethiopian Airlines
         <small>CAREERS &amp; VACANCIES</small>
       </div>
     </div>
     <div class="nav-links">
       <a href="#openings">Local Openings</a>
-      <a onclick="event.preventDefault(); showSection('vacancySection');" href="#">Cabin Crew Vacancy</a>
-      <a onclick="event.preventDefault(); showSection('register');" href="#">Register</a>
+      <a href="vacancy.html">Cabin Crew Vacancy</a>
+      <a href="register.html">Register</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -407,11 +275,7 @@
         <div class="hero-tagline">A TIMELESS LEGACY</div>
       </div>
       <div class="hero-logo">
-        <svg class="hero-logo-feather" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 55 C20 40 40 20 70 8 C80 4 90 3 98 5 C85 10 65 20 45 35 C25 50 12 56 5 55 Z" fill="#2f5233"/>
-          <path d="M12 50 C25 38 42 22 68 11 C77 8 88 6 98 5 C85 12 63 24 45 38 C28 50 18 52 12 50 Z" fill="#e8b923"/>
-          <path d="M20 44 C30 35 45 24 65 15 C73 12 85 9 98 5 C86 14 63 27 48 40 C35 49 26 47 20 44 Z" fill="#c8102e"/>
-        </svg>
+        <img class="hero-logo-feather" src="assets/logo-feather.png" alt="">
         <div style="display:flex; align-items:center; gap:4px;">
           <span class="num eight">8</span><span class="num zero">0</span>
           <span class="sub"><span class="year">1946 – 2026</span><br><span class="years-word">years</span></span>
@@ -423,13 +287,6 @@
   <h2 class="section-title" id="openings">Local Job Openings</h2>
 
   <div class="jobs">
-    <div class="job-row clickable" onclick="showSection('vacancySection')">
-      <p><span class="label">Position :</span> <span class="value">Cabin Crew / Air Hostess (ET Sponsored Trainee)</span></p>
-      <p><span class="label">Location :</span> <span class="value">Different Locations</span></p>
-      <p><span class="label">Registration Date :</span> <span class="value">Open</span></p>
-      <span class="hint">Click to view vacancy details →</span>
-    </div>
-
     <div class="job-row">
       <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Data Science for Aviation Management</span></p>
       <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
@@ -453,6 +310,13 @@
       <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
       <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
+
+    <a class="job-row clickable" href="vacancy.html">
+      <p><span class="label">Position :</span> <span class="value">Cabin Crew / Air Hostess (ET Sponsored Trainee)</span></p>
+      <p><span class="label">Location :</span> <span class="value">Different Locations</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Open</span></p>
+      <span class="hint">Click to view vacancy details →</span>
+    </a>
 
     <div class="job-row">
       <p><span class="label">Position :</span> <span class="value">Adjunct Professor of General Psychology</span></p>
@@ -485,199 +349,6 @@
     </div>
   </div>
 
-  <div id="vacancySection" class="toggle-section">
-    <h2 class="section-title" id="vacancy">Vacancy Announcement — ET Sponsored Trainee Cabin Crew</h2>
-    <div class="vacancy-box">
-      <div class="vacancy-top">
-        <div class="field"><span class="label">Position:</span><span class="value">ET Sponsored Trainee Cabin Crew</span></div>
-        <div class="field"><span class="label">Location:</span><span class="value">Different Locations</span></div>
-        <div class="field"><span class="label">Registration Date:</span><span class="value">August 10, 2026 – August 16, 2026</span></div>
-        <div class="field"><span class="label">Closing Date:</span><span class="value">August 16, 2026</span></div>
-      </div>
-
-      <ul class="vacancy-list">
-        <li><strong>Required Educational Qualification:</strong> A minimum of Ethiopian University Entrance Exam Certificate (EUEEC) with a minimum 200 result.</li>
-        <li><strong>Age Limit:</strong> 21–30 years old inclusive.</li>
-        <li><strong>Height:</strong> A minimum of 1.58m and an arm reach of 212cm for female, and a minimum of 1.70m for male.</li>
-        <li><strong>Weight:</strong> Proportional to height.</li>
-        <li><strong>English Language Proficiency:</strong> Level III; knowledge of another language is advantageous.</li>
-      </ul>
-
-      <p class="vacancy-sub">Registration Places / Locations:</p>
-      <ul class="vacancy-locations">
-        <li>Adama Science and Technology University, Adama</li>
-        <li>Addis Ababa, Online (application link activated during application period)</li>
-        <li>Ambo University, Ambo</li>
-        <li>Arbaminch University, Arbaminch</li>
-        <li>Bahir Dar University, Bahir Dar</li>
-        <li>Jimma University, Jimma</li>
-        <li>Hawassa Airport, Hawassa</li>
-        <li>University of Gondar, Gondar</li>
-      </ul>
-
-      <p class="vacancy-nb"><strong>N.B:</strong> Bring original supporting documents (8th Grade Ministry Card & Birth Certificate, Grade 12 Certificate, Kebele ID). Applications with false information will be terminated upon discovery.</p>
-      <a onclick="event.preventDefault(); showSection('register');" href="#" class="apply-link">TO APPLY CLICK HERE ↓</a>
-    </div>
-  </div>
-
-  <div class="form-wrap toggle-section" id="register">
-    <h2>Application Form for Local Applicants</h2>
-    <p>Fields marked with the position dropdown reflect the openings listed above.</p>
-    <form id="regForm">
-      <div>
-        <label for="school">Training School</label>
-        <select id="school" required>
-          <option value="">--Select Your School--</option>
-          <option>Adama Science and Technology University, Adama</option>
-          <option>Addis Ababa, Online</option>
-          <option>Ambo University, Ambo</option>
-          <option>Arbaminch University, Arbaminch</option>
-          <option>Bahir Dar University, Bahir Dar</option>
-          <option>Jimma University, Jimma</option>
-          <option>Hawassa Airport, Hawassa</option>
-          <option>University of Gondar, Gondar</option>
-        </select>
-      </div>
-      <div>
-        <label for="program">Training Programs</label>
-        <select id="program" required>
-          <option value="">--Select Your Course--</option>
-          <option>ET Sponsored Trainee Cabin Crew</option>
-          <option>Cabin Crew / Air Hostess</option>
-          <option>Adjunct Professor of Data Science for Aviation Management</option>
-          <option>Adjunct Professor of Digital Electronics and Microprocessors</option>
-          <option>Adjunct Professor of Engineering Drawing I</option>
-          <option>Adjunct Professor of Engineering Mechanics II</option>
-          <option>Adjunct Professor of General Psychology</option>
-          <option>Adjunct Professor of Introduction to Aeronautical Engineering</option>
-          <option>Adjunct Professor of Introduction to Aeronautical Science</option>
-          <option>Adjunct Professor of Introduction to Economics</option>
-          <option>Adjunct Professor of Introduction to Emerging Technology</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" required placeholder="First Name">
-      </div>
-      <div>
-        <label for="mname">Middle Name</label>
-        <input type="text" id="mname" placeholder="Middle Name">
-      </div>
-      <div>
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" required placeholder="Last Name">
-      </div>
-
-      <div>
-        <label for="gender">Gender</label>
-        <select id="gender" required>
-          <option value="">Select</option>
-          <option>Female</option>
-          <option>Male</option>
-        </select>
-      </div>
-      <div>
-        <label for="city">Physical Location (City)</label>
-        <input type="text" id="city" required placeholder="City">
-      </div>
-
-      <div class="full">
-        <label>Birth Date (G.C.)</label>
-        <div style="display:flex; gap:12px; flex-wrap:wrap;">
-          <select id="dobDay" required style="flex:1; min-width:80px;">
-            <option value="">Day</option>
-            <script>document.write(Array.from({length:31},(_,i)=>`<option>${i+1}</option>`).join(''))</script>
-          </select>
-          <select id="dobMonth" required style="flex:2; min-width:120px;">
-            <option value="">Month</option>
-            <option>January</option><option>February</option><option>March</option><option>April</option>
-            <option>May</option><option>June</option><option>July</option><option>August</option>
-            <option>September</option><option>October</option><option>November</option><option>December</option>
-          </select>
-          <select id="dobYear" required style="flex:1; min-width:90px;">
-            <option value="">Year</option>
-            <script>document.write(Array.from({length:30},(_,i)=>`<option>${2008-i}</option>`).join(''))</script>
-          </select>
-        </div>
-      </div>
-
-      <div>
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required placeholder="Phone number">
-      </div>
-      <div>
-        <label for="altphone">Alternative Phone Number (optional)</label>
-        <input type="tel" id="altphone" placeholder="Other phone number (optional)">
-      </div>
-
-      <div>
-        <label for="nationality">Nationality</label>
-        <select id="nationality">
-          <option>Ethiopian</option>
-          <option>Other</option>
-        </select>
-      </div>
-      <div>
-        <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="Personal Email">
-      </div>
-
-      <div class="full">
-        <label for="source">Where did you get the Announcement?</label>
-        <select id="source" required>
-          <option value="">Select</option>
-          <option>Ethiopian Airlines Website</option>
-          <option>Social Media</option>
-          <option>Friend / Family</option>
-          <option>University Notice Board</option>
-          <option>Other</option>
-        </select>
-      </div>
-
-      <div>
-        <label for="edu">Educational Background</label>
-        <select id="edu" required>
-          <option value="">Select</option>
-          <option>Grade 12 Complete</option>
-          <option>Diploma</option>
-          <option>Bachelor's Degree</option>
-          <option>Master's Degree</option>
-        </select>
-      </div>
-      <div>
-        <label for="field">Field of Study</label>
-        <input type="text" id="field" placeholder="Field of study">
-      </div>
-
-      <div>
-        <label for="kebele">Renewed Kebele ID</label>
-        <input type="file" id="kebele" required>
-      </div>
-      <div>
-        <label for="certs">Educational Certificates and Birth Certificate</label>
-        <input type="file" id="certs" required multiple>
-      </div>
-
-      <div class="full notice-box">
-        <strong>Before Submitting Your Application Please Read Carefully the Below Notice:</strong>
-        <ul>
-          <li>Make sure you submitted/attached all credentials required for registration. Otherwise, your application will be invalid or declined.</li>
-          <li>Before submitting, please read the entry requirements and make sure you fulfil all the requirements listed.</li>
-          <li>Updates regarding the pre-admission process will be released on our website — check regularly.</li>
-          <li>If your physical presence is required, come only on the stated date and time, fulfilling the necessary requirements.</li>
-          <li>Proper grooming and attire is required at all times.</li>
-          <li>All information given must be true. False information found at any stage leads to termination from the process or employment upon discovery.</li>
-          <li>Training may be delivered virtually — ensure you have internet access, Microsoft Teams, and a laptop/PC.</li>
-          <li>Training does not entitle you to employment; Ethiopian Airlines has no obligation to employ or place you afterward.</li>
-        </ul>
-      </div>
-
-      <button type="submit" class="submit-btn">Submit</button>
-      <div class="confirm-msg" id="confirmMsg">✓ Application submitted successfully. We'll contact you via email.</div>
-    </form>
-  </div>
-
   <footer id="contact">
     <div>
       <h4>Contact Us</h4>
@@ -699,76 +370,12 @@
     </div>
     <div>
       <h4>Application Forms</h4>
-      <a href="#">Sales &amp; Marketing Training</a>
-      <a href="#">Aircraft Maintenance Training</a>
-      <a href="#">Cabin Crew / Air Hostess</a>
+      <a href="register.html">Sales &amp; Marketing Training</a>
+      <a href="register.html">Aircraft Maintenance Training</a>
+      <a href="vacancy.html">Cabin Crew / Air Hostess</a>
     </div>
   </footer>
   <div class="footer-bottom">© 2026 Ethiopian Airlines — Student project, for academic use only (Computer Graphics assignment)</div>
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyBmHnbVpJa8yZqF_IqtpPuTkBqNxDFD_Ms",
-    authDomain: "airlines-form.firebaseapp.com",
-    projectId: "airlines-form",
-    storageBucket: "airlines-form.firebasestorage.app",
-    messagingSenderId: "666778669594",
-    appId: "1:666778669594:web:5f4db9e4a0a37e87a537a3"
-  };
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  function showSection(id){
-    document.querySelectorAll('.toggle-section').forEach(function(el){ el.style.display = 'none'; });
-    const el = document.getElementById(id);
-    el.style.display = 'block';
-    el.scrollIntoView({behavior:'smooth', block:'start'});
-  }
-</script>
-
-<script>
-  document.getElementById('regForm').addEventListener('submit', async function(e){
-    e.preventDefault();
-    const submitBtn = this.querySelector('.submit-btn');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-
-    const application = {
-      trainingSchool: document.getElementById('school').value,
-      trainingProgram: document.getElementById('program').value,
-      firstName: document.getElementById('fname').value,
-      middleName: document.getElementById('mname').value,
-      lastName: document.getElementById('lname').value,
-      gender: document.getElementById('gender').value,
-      city: document.getElementById('city').value,
-      dobDay: document.getElementById('dobDay').value,
-      dobMonth: document.getElementById('dobMonth').value,
-      dobYear: document.getElementById('dobYear').value,
-      phone: document.getElementById('phone').value,
-      altPhone: document.getElementById('altphone').value,
-      nationality: document.getElementById('nationality').value,
-      email: document.getElementById('email').value,
-      source: document.getElementById('source').value,
-      education: document.getElementById('edu').value,
-      fieldOfStudy: document.getElementById('field').value,
-      submittedAt: new Date().toISOString()
-    };
-
-    try {
-      await db.collection('applications').add(application);
-      document.getElementById('confirmMsg').style.display = 'block';
-      this.reset();
-    } catch (err) {
-      alert('Something went wrong submitting your application. Please try again.\n' + err.message);
-      console.error(err);
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit';
-    }
-  });
-</script>
 
 </body>
 </html>
