@@ -81,7 +81,8 @@
     border-radius:200px;
     overflow:hidden;
     background:#dfe3d6;
-    height:320px;
+    width:100%;
+    aspect-ratio: 1584 / 291;
     position:relative;
   }
   .hero-oval img{
@@ -116,8 +117,13 @@
   }
   .hero-logo{
     display:flex;
-    align-items:center;
-    gap:4px;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:2px;
+  }
+  .hero-logo-feather{
+    width:60px;
+    height:28px;
   }
   .hero-logo .num{
     font-family:"Georgia", serif;
@@ -374,8 +380,15 @@
         <div class="hero-tagline">A TIMELESS LEGACY</div>
       </div>
       <div class="hero-logo">
-        <span class="num eight">8</span><span class="num zero">0</span>
-        <span class="sub"><span class="year">1946 – 2026</span><br><span class="years-word">years</span></span>
+        <svg class="hero-logo-feather" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 26 C10 18 22 10 40 4 C48 2 54 2 58 4 C50 6 40 10 30 16 C18 22 8 26 2 26 Z" fill="#2f5233"/>
+          <path d="M8 24 C16 17 26 11 40 6 C46 4 52 3 58 4 C50 8 40 12 30 18 C20 22 12 24 8 24 Z" fill="#e8b923"/>
+          <path d="M14 22 C20 17 28 12 40 8 C44 6.5 50 5.5 58 4 C50 10 40 14 32 19 C24 23 18 23 14 22 Z" fill="#c8102e"/>
+        </svg>
+        <div style="display:flex; align-items:center; gap:4px;">
+          <span class="num eight">8</span><span class="num zero">0</span>
+          <span class="sub"><span class="year">1946 – 2026</span><br><span class="years-word">years</span></span>
+        </div>
       </div>
     </div>
   </section>
