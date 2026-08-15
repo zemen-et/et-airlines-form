@@ -162,11 +162,17 @@
 
   .jobs{
     max-width:1000px;
-    margin:0 40px;
+    margin:0 auto;
+    padding:0 40px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
   }
   .job-row{
-    padding:20px 4px;
-    border-bottom:1px solid #e2e2dc;
+    background: var(--bg-card);
+    border-radius:8px;
+    padding:20px 26px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     font-family:Arial, sans-serif;
     font-size:14.5px;
     line-height:1.9;
@@ -174,8 +180,8 @@
   .job-row p{margin:0;}
   .job-row .label{color:var(--et-olive); font-weight:bold;}
   .job-row .value{color:#333;}
-  .job-row.clickable{cursor:pointer; transition:background .15s ease; text-decoration:none; color:inherit; display:block;}
-  .job-row.clickable:hover{background:#fafaf7;}
+  .job-row.clickable{cursor:pointer; transition:transform .15s ease, box-shadow .15s ease; text-decoration:none; color:inherit; display:block;}
+  .job-row.clickable:hover{transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,0.1);}
   .job-row .hint{
     display:inline-block;
     margin-top:4px;
@@ -214,7 +220,7 @@
 
   @media(max-width:900px){
     .section-title{margin-left:20px; margin-right:20px; font-size:19px;}
-    .jobs{margin-left:20px; margin-right:20px;}
+    .jobs{padding:0 20px;}
     .hero{padding:28px 20px 40px;}
   }
   @media(max-width:680px){

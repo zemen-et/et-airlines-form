@@ -189,7 +189,9 @@
 
       <div>
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required placeholder="Phone number">
+        <input type="tel" id="phone" required placeholder="09XXXXXXXX or 07XXXXXXXX"
+               pattern="^(09|07)\d{8}$" maxlength="10" inputmode="numeric"
+               title="Must start with 09 or 07 and be exactly 10 digits">
       </div>
       <div>
         <label for="altphone">Alternative Phone Number (optional)</label>
@@ -307,8 +309,20 @@
 </script>
 
 <script>
+  document.getElementById('phone').addEventListener('input', function(e){
+    e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+  });
+
   document.getElementById('regForm').addEventListener('submit', async function(e){
     e.preventDefault();
+
+    const phoneVal = document.getElementById('phone').value;
+    if (!/^(09|07)\d{8}$/.test(phoneVal)) {
+      alert('Phone number must start with 09 or 07 and be exactly 10 digits.');
+      document.getElementById('phone').focus();
+      return;
+    }
+
     const submitBtn = this.querySelector('.submit-btn');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Submitting...';
