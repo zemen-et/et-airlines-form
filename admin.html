@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethiopian Airlines | Admin — Applications</title>
+<style>
+  :root{
+    --et-green:#2f5233; --et-olive:#6b7f2e; --et-gold:#e8b923; --et-red:#c8102e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family: Arial, sans-serif;
+    background:#f4f4f2;
+    color:#26301f;
+  }
+  header{
+    background: var(--et-green);
+    color:#fff;
+    padding:18px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  header h1{font-size:19px; font-weight:bold;}
+  header button{
+    background: var(--et-gold);
+    color: var(--et-green);
+    border:none;
+    padding:8px 18px;
+    border-radius:20px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+  }
+
+  /* Login screen */
+  #loginScreen{
+    max-width:380px;
+    margin:80px auto;
+    background:#fff;
+    border:1px solid #e2e2dc;
+    border-radius:10px;
+    padding:36px 30px;
+    text-align:center;
+  }
+  #loginScreen h2{color:var(--et-green); margin-bottom:6px;}
+  #loginScreen p{font-size:13px; color:#666; margin-bottom:22px;}
+  #loginScreen input{
+    width:100%;
+    padding:11px 12px;
+    margin-bottom:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+  }
+  #loginScreen button{
+    width:100%;
+    background:var(--et-green);
+    color:#fff;
+    border:none;
+    padding:12px;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:14px;
+  }
+  #loginError{color:var(--et-red); font-size:13px; margin-top:10px; display:none;}
+
+  /* Dashboard */
+  #dashboard{display:none; padding:24px 30px;}
+  .stats{
+    display:flex;
+    gap:16px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+  }
+  .stat-card{
+    background:#fff;
+    border:1px solid #e2e2dc;
+    border-radius:8px;
+    padding:16px 22px;
+    min-width:160px;
+  }
+  .stat-card .num{font-size:26px; font-weight:bold; color:var(--et-green);}
+  .stat-card .lbl{font-size:12px; color:#777; text-transform:uppercase; letter-spacing:1px;}
+
+  .toolbar{
+    display:flex;
+    gap:10px;
+    margin-bottom:16px;
+    flex-wrap:wrap;
+  }
+  .toolbar input{
+    padding:9px 12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:13px;
+    flex:1;
+    min-width:200px;
+  }
+  .toolbar button{
+    background:var(--et-olive);
+    color:#fff;
+    border:none;
+    padding:9px 16px;
+    border-radius:6px;
+    font-size:13px;
+    cursor:pointer;
+  }
+
+  .table-wrap{
+    background:#fff;
+    border:1px solid #e2e2dc;
+    border-radius:8px;
+    overflow-x:auto;
+  }
+  table{width:100%; border-collapse:collapse; font-size:13px; white-space:nowrap;}
+  th{
+    background: var(--bg-card, #eef1e8);
+    color: var(--et-olive);
+    text-align:left;
+    padding:12px 14px;
+    border-bottom:2px solid var(--et-green);
+    position:sticky; top:0;
+  }
+  td{padding:11px 14px; border-bottom:1px solid #eee;}
+  tr:hover td{background:#fafaf7;}
+  .empty-msg{padding:30px; text-align:center; color:#888;}
+  .del-btn{
+    background:none; border:1px solid var(--et-red); color:var(--et-red);
+    padding:4px 10px; border-radius:14px; font-size:11px; cursor:pointer;
+  }
+  .del-btn:hover{background:var(--et-red); color:#fff;}
+
+  @media(max-width:600px){
+    header{padding:14px 16px;}
+    #dashboard{padding:16px;}
+    #loginScreen{margin:50px 16px; padding:28px 20px;}
+  }
+</style>
+</head>
+<body>
+
+  <div id="loginScreen">
+    <h2>Admin Login</h2>
+    <p>Ethiopian Airlines — Careers &amp; Vacancies Admin Panel</p>
+    <input type="email" id="loginEmail" placeholder="Admin email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="doLogin()">Log In</button>
+    <div id="loginError">Invalid email or password. Try again.</div>
+  </div>
+
+  <div id="dashboard">
+    <header>
+      <h1>Applications Dashboard</h1>
+      <button onclick="doLogout()">Log Out</button>
+    </header>
+
+    <div style="padding:24px 30px 0;">
+      <div class="stats">
+        <div class="stat-card"><div class="num" id="totalCount">0</div><div class="lbl">Total Applications</div></div>
+        <div class="stat-card"><div class="num" id="todayCount">0</div><div class="lbl">Submitted Today</div></div>
+      </div>
+
+      <div class="toolbar">
+        <input type="text" id="searchBox" placeholder="Search by name, email, phone, or program..." oninput="renderTable()">
+        <button onclick="exportCSV()">Export CSV</button>
+        <button onclick="loadApplications()">Refresh</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Program</th>
+              <th>School</th>
+              <th>Gender</th>
+              <th>City</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Education</th>
+              <th>Field of Study</th>
+              <th>Submitted</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+        <div class="empty-msg" id="emptyMsg" style="display:none;">No applications found.</div>
+      </div>
+    </div>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBmHnbVpJa8yZqF_IqtpPuTkBqNxDFD_Ms",
+    authDomain: "airlines-form.firebaseapp.com",
+    projectId: "airlines-form",
+    storageBucket: "airlines-form.firebasestorage.app",
+    messagingSenderId: "666778669594",
+    appId: "1:666778669594:web:5f4db9e4a0a37e87a537a3"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
+
+  let allApps = [];
+
+  auth.onAuthStateChanged(function(user){
+    if (user) {
+      document.getElementById('loginScreen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      loadApplications();
+    } else {
+      document.getElementById('loginScreen').style.display = 'block';
+      document.getElementById('dashboard').style.display = 'none';
+    }
+  });
+
+  function doLogin(){
+    const email = document.getElementById('loginEmail').value;
+    const password = document.getElementById('loginPassword').value;
+    document.getElementById('loginError').style.display = 'none';
+    auth.signInWithEmailAndPassword(email, password).catch(function(err){
+      document.getElementById('loginError').style.display = 'block';
+      console.error(err);
+    });
+  }
+
+  function doLogout(){
+    auth.signOut();
+  }
+
+  async function loadApplications(){
+    try {
+      const snapshot = await db.collection('applications').orderBy('submittedAt', 'desc').get();
+      allApps = [];
+      snapshot.forEach(function(doc){
+        allApps.push(Object.assign({id: doc.id}, doc.data()));
+      });
+      renderTable();
+      updateStats();
+    } catch (err) {
+      alert('Could not load applications. Make sure Firestore rules allow authenticated reads.\n' + err.message);
+      console.error(err);
+    }
+  }
+
+  function updateStats(){
+    document.getElementById('totalCount').textContent = allApps.length;
+    const todayStr = new Date().toDateString();
+    const todayCount = allApps.filter(function(a){
+      return a.submittedAt && new Date(a.submittedAt).toDateString() === todayStr;
+    }).length;
+    document.getElementById('todayCount').textContent = todayCount;
+  }
+
+  function renderTable(){
+    const query = document.getElementById('searchBox').value.toLowerCase();
+    const filtered = allApps.filter(function(a){
+      const haystack = [a.firstName, a.lastName, a.email, a.phone, a.trainingProgram].join(' ').toLowerCase();
+      return haystack.includes(query);
+    });
+
+    const tbody = document.getElementById('tableBody');
+    tbody.innerHTML = '';
+    document.getElementById('emptyMsg').style.display = filtered.length ? 'none' : 'block';
+
+    filtered.forEach(function(a){
+      const tr = document.createElement('tr');
+      const submitted = a.submittedAt ? new Date(a.submittedAt).toLocaleString() : '';
+      tr.innerHTML =
+        '<td>' + escapeHtml([a.firstName, a.middleName, a.lastName].filter(Boolean).join(' ')) + '</td>' +
+        '<td>' + escapeHtml(a.trainingProgram || '') + '</td>' +
+        '<td>' + escapeHtml(a.trainingSchool || '') + '</td>' +
+        '<td>' + escapeHtml(a.gender || '') + '</td>' +
+        '<td>' + escapeHtml(a.city || '') + '</td>' +
+        '<td>' + escapeHtml(a.phone || '') + '</td>' +
+        '<td>' + escapeHtml(a.email || '') + '</td>' +
+        '<td>' + escapeHtml(a.education || '') + '</td>' +
+        '<td>' + escapeHtml(a.fieldOfStudy || '') + '</td>' +
+        '<td>' + escapeHtml(submitted) + '</td>' +
+        '<td><button class="del-btn" onclick="deleteApp(\'' + a.id + '\')">Delete</button></td>';
+      tbody.appendChild(tr);
+    });
+  }
+
+  async function deleteApp(id){
+    if (!confirm('Delete this application permanently?')) return;
+    try {
+      await db.collection('applications').doc(id).delete();
+      allApps = allApps.filter(function(a){ return a.id !== id; });
+      renderTable();
+      updateStats();
+    } catch (err) {
+      alert('Could not delete: ' + err.message);
+    }
+  }
+
+  function escapeHtml(str){
+    return String(str).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+
+  function exportCSV(){
+    if (!allApps.length) { alert('No data to export.'); return; }
+    const cols = ['firstName','middleName','lastName','trainingProgram','trainingSchool','gender','city','phone','altPhone','email','education','fieldOfStudy','submittedAt'];
+    const rows = [cols.join(',')];
+    allApps.forEach(function(a){
+      rows.push(cols.map(function(c){
+        const v = (a[c] || '').toString().replace(/"/g, '""');
+        return '"' + v + '"';
+      }).join(','));
+    });
+    const blob = new Blob([rows.join('\n')], {type:'text/csv'});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'et_airlines_applications.csv';
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+</script>
+
+</body>
+</html>

@@ -18,7 +18,9 @@
     font-family: "Georgia", "Times New Roman", serif;
     background:#ffffff;
     color: var(--text-dark);
+    overflow-x:hidden;
   }
+  .toggle-section{display:none;}
 
   /* Top utility bar */
   .topbar{
@@ -44,15 +46,17 @@
     flex-wrap:wrap;
     gap:12px;
   }
-  .brand{display:flex; align-items:center; gap:12px;}
+  .brand{display:flex; align-items:flex-start; gap:2px; position:relative;}
   .brand-logo{
-    width:44px;height:44px;
+    width:36px;height:22px;
+    margin-top:-6px;
   }
   .brand-text{
-    font-size:22px;
+    font-size:24px;
     font-weight:bold;
     color:var(--et-red);
     letter-spacing:.5px;
+    line-height:1;
   }
   .brand-text small{
     display:block;
@@ -60,6 +64,8 @@
     color:var(--et-olive);
     font-weight:normal;
     letter-spacing:1px;
+    margin-top:4px;
+    font-family:Arial, sans-serif;
   }
   .nav-links{
     display:flex;
@@ -69,7 +75,7 @@
     color:#333;
     flex-wrap:wrap;
   }
-  .nav-links a{color:#333; text-decoration:none;}
+  .nav-links a{color:#333; text-decoration:none; cursor:pointer;}
   .nav-links a:hover{color:var(--et-red);}
 
   /* Hero */
@@ -122,8 +128,8 @@
     gap:2px;
   }
   .hero-logo-feather{
-    width:60px;
-    height:28px;
+    width:64px;
+    height:32px;
   }
   .hero-logo .num{
     font-family:"Georgia", serif;
@@ -156,39 +162,34 @@
     font-weight:bold;
   }
 
-  /* Job cards */
+  /* Job list - plain rows, not boxed */
   .jobs{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
+    max-width:1000px;
     margin:0 40px;
   }
-  .job-card{
-    background: var(--bg-card);
-    border-radius:6px;
-    padding:18px 22px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 32px;
+  .job-row{
+    padding:20px 4px;
+    border-bottom:1px solid #e2e2dc;
     font-family:Arial, sans-serif;
     font-size:14.5px;
-    border:1px solid #e7e7e2;
-    transition:transform .15s ease, box-shadow .15s ease;
+    line-height:1.9;
   }
-  .job-card:hover{
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-  }
-  .job-card .field{display:flex; gap:6px; align-items:baseline;}
-  .job-card .label{color:var(--et-olive); font-weight:bold;}
-  .job-card .value{color:#333;}
-  .job-card.highlight{
-    border:1px solid var(--et-gold);
-    background: #fbf6e6;
+  .job-row p{margin:0;}
+  .job-row .label{color:var(--et-olive); font-weight:bold;}
+  .job-row .value{color:#333;}
+  .job-row.clickable{cursor:pointer; transition:background .15s ease;}
+  .job-row.clickable:hover{background:#fafaf7;}
+  .job-row .hint{
+    display:inline-block;
+    margin-top:4px;
+    font-size:12.5px;
+    color:var(--et-red);
+    font-weight:bold;
   }
 
   /* Vacancy detail box */
   .vacancy-box{
+    max-width:1000px;
     margin:0 40px;
     background:#fff;
     border:1px solid #e7e7e2;
@@ -222,6 +223,7 @@
     text-decoration:none;
     border-bottom:2px solid var(--et-gold);
     padding-bottom:2px;
+    cursor:pointer;
   }
   .apply-link:hover{color:var(--et-red);}
 
@@ -239,6 +241,7 @@
 
   /* Registration form */
   .form-wrap{
+    max-width:1000px;
     margin:60px 40px 20px;
     background: var(--et-green);
     border-radius:10px;
@@ -333,11 +336,35 @@
     font-size:12px;
   }
 
-  @media(max-width:700px){
+  /* Responsive */
+  @media(max-width:900px){
+    .section-title{margin-left:20px; margin-right:20px; font-size:19px;}
+    .jobs, .vacancy-box, .form-wrap{margin-left:20px; margin-right:20px;}
+    .hero{padding:28px 20px 40px;}
+  }
+  @media(max-width:680px){
+    .topbar{justify-content:center; gap:14px; font-size:11.5px; padding:10px 14px;}
+    nav{padding:14px 18px; flex-direction:column; align-items:flex-start;}
+    .nav-links{gap:16px; font-size:13px;}
+    .brand-text{font-size:20px;}
+    .hero-caption{flex-direction:column; align-items:flex-start; gap:16px;}
+    .hero-logo{align-items:flex-start;}
+    .hero-years-text{font-size:38px;}
+    .hero-logo .num{font-size:48px;}
     form{grid-template-columns:1fr;}
-    .topbar, nav{padding:12px 18px;}
-    .hero{padding:50px 20px;}
-    .section-title, .jobs, .form-wrap{margin-left:18px; margin-right:18px;}
+    .form-wrap, .vacancy-box{padding:22px 18px;}
+    footer{gap:32px; padding:36px 20px 20px;}
+    .footer-bottom{margin-left:20px; margin-right:20px;}
+  }
+  @media(max-width:420px){
+    .brand-text{font-size:17px;}
+    .brand-text small{font-size:9.5px;}
+    .hero-years-text{font-size:28px;}
+    .hero-logo .num{font-size:36px;}
+    .section-title{font-size:16px; padding:14px 16px;}
+    .job-row{font-size:13px;}
+    .submit-btn{width:100%; text-align:center;}
+    .topbar span{font-size:10.5px;}
   }
 </style>
 </head>
@@ -353,10 +380,10 @@
 
   <nav>
     <div class="brand">
-      <svg class="brand-logo" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
-        <path d="M30 6 C42 6 52 16 54 30 C48 22 40 18 30 18 C20 18 12 22 6 30 C8 16 18 6 30 6 Z" fill="#2f5233"/>
-        <path d="M30 18 C40 18 48 22 54 30 C48 32 40 32 30 30 C20 32 12 32 6 30 C12 22 20 18 30 18 Z" fill="#e8b923"/>
-        <path d="M30 30 C40 32 48 32 54 30 C50 40 40 48 30 48 C20 48 10 40 6 30 C12 32 20 32 30 30 Z" fill="#c8102e"/>
+      <svg class="brand-logo" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 55 C20 40 40 20 70 8 C80 4 90 3 98 5 C85 10 65 20 45 35 C25 50 12 56 5 55 Z" fill="#2f5233"/>
+        <path d="M12 50 C25 38 42 22 68 11 C77 8 88 6 98 5 C85 12 63 24 45 38 C28 50 18 52 12 50 Z" fill="#e8b923"/>
+        <path d="M20 44 C30 35 45 24 65 15 C73 12 85 9 98 5 C86 14 63 27 48 40 C35 49 26 47 20 44 Z" fill="#c8102e"/>
       </svg>
       <div class="brand-text">Ethiopian Airlines
         <small>CAREERS &amp; VACANCIES</small>
@@ -364,8 +391,8 @@
     </div>
     <div class="nav-links">
       <a href="#openings">Local Openings</a>
-      <a href="#vacancy">Cabin Crew Vacancy</a>
-      <a href="#register">Register</a>
+      <a onclick="event.preventDefault(); showSection('vacancySection');" href="#">Cabin Crew Vacancy</a>
+      <a onclick="event.preventDefault(); showSection('register');" href="#">Register</a>
       <a href="#contact">Contact</a>
     </div>
   </nav>
@@ -380,10 +407,10 @@
         <div class="hero-tagline">A TIMELESS LEGACY</div>
       </div>
       <div class="hero-logo">
-        <svg class="hero-logo-feather" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
-          <path d="M2 26 C10 18 22 10 40 4 C48 2 54 2 58 4 C50 6 40 10 30 16 C18 22 8 26 2 26 Z" fill="#2f5233"/>
-          <path d="M8 24 C16 17 26 11 40 6 C46 4 52 3 58 4 C50 8 40 12 30 18 C20 22 12 24 8 24 Z" fill="#e8b923"/>
-          <path d="M14 22 C20 17 28 12 40 8 C44 6.5 50 5.5 58 4 C50 10 40 14 32 19 C24 23 18 23 14 22 Z" fill="#c8102e"/>
+        <svg class="hero-logo-feather" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 55 C20 40 40 20 70 8 C80 4 90 3 98 5 C85 10 65 20 45 35 C25 50 12 56 5 55 Z" fill="#2f5233"/>
+          <path d="M12 50 C25 38 42 22 68 11 C77 8 88 6 98 5 C85 12 63 24 45 38 C28 50 18 52 12 50 Z" fill="#e8b923"/>
+          <path d="M20 44 C30 35 45 24 65 15 C73 12 85 9 98 5 C86 14 63 27 48 40 C35 49 26 47 20 44 Z" fill="#c8102e"/>
         </svg>
         <div style="display:flex; align-items:center; gap:4px;">
           <span class="num eight">8</span><span class="num zero">0</span>
@@ -396,101 +423,104 @@
   <h2 class="section-title" id="openings">Local Job Openings</h2>
 
   <div class="jobs">
-    <div class="job-card highlight">
-      <div class="field"><span class="label">Position:</span><span class="value">Cabin Crew / Air Hostess</span></div>
-      <div class="field"><span class="label">Location:</span><span class="value">Addis Ababa, Bole International Airport</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Open</span></div>
+    <div class="job-row clickable" onclick="showSection('vacancySection')">
+      <p><span class="label">Position :</span> <span class="value">Cabin Crew / Air Hostess (ET Sponsored Trainee)</span></p>
+      <p><span class="label">Location :</span> <span class="value">Different Locations</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Open</span></p>
+      <span class="hint">Click to view vacancy details →</span>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Data Science for Aviation Management</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Data Science for Aviation Management</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Digital Electronics and Microprocessors</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Digital Electronics and Microprocessors</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Engineering Drawing I</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Engineering Drawing I</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Engineering Mechanics II</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Engineering Mechanics II</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of General Psychology</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of General Psychology</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Introduction to Aeronautical Engineering</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Aeronautical Engineering</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Introduction to Aeronautical Science</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Aeronautical Science</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Introduction to Economics</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Economics</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
 
-    <div class="job-card">
-      <div class="field"><span class="label">Position:</span><span class="value">Adjunct Professor of Introduction to Emerging Technology</span></div>
-      <div class="field"><span class="label">Email:</span><span class="value">eauhr@ethiopianairlines.com</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">Aug 17, 2025 – Aug 28, 2026</span></div>
+    <div class="job-row">
+      <p><span class="label">Position :</span> <span class="value">Adjunct Professor of Introduction to Emerging Technology</span></p>
+      <p><span class="label">Email :</span> <span class="value">eauhr@ethiopianairlines.com</span></p>
+      <p><span class="label">Registration Date :</span> <span class="value">Aug 17, 2025 – Aug 28, 2026</span></p>
     </div>
   </div>
 
-  <h2 class="section-title" id="vacancy">Vacancy Announcement — ET Sponsored Trainee Cabin Crew</h2>
-  <div class="vacancy-box">
-    <div class="vacancy-top">
-      <div class="field"><span class="label">Position:</span><span class="value">ET Sponsored Trainee Cabin Crew</span></div>
-      <div class="field"><span class="label">Location:</span><span class="value">Different Locations</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">August 10, 2026 – August 16, 2026</span></div>
-      <div class="field"><span class="label">Closing Date:</span><span class="value">August 16, 2026</span></div>
+  <div id="vacancySection" class="toggle-section">
+    <h2 class="section-title" id="vacancy">Vacancy Announcement — ET Sponsored Trainee Cabin Crew</h2>
+    <div class="vacancy-box">
+      <div class="vacancy-top">
+        <div class="field"><span class="label">Position:</span><span class="value">ET Sponsored Trainee Cabin Crew</span></div>
+        <div class="field"><span class="label">Location:</span><span class="value">Different Locations</span></div>
+        <div class="field"><span class="label">Registration Date:</span><span class="value">August 10, 2026 – August 16, 2026</span></div>
+        <div class="field"><span class="label">Closing Date:</span><span class="value">August 16, 2026</span></div>
+      </div>
+
+      <ul class="vacancy-list">
+        <li><strong>Required Educational Qualification:</strong> A minimum of Ethiopian University Entrance Exam Certificate (EUEEC) with a minimum 200 result.</li>
+        <li><strong>Age Limit:</strong> 21–30 years old inclusive.</li>
+        <li><strong>Height:</strong> A minimum of 1.58m and an arm reach of 212cm for female, and a minimum of 1.70m for male.</li>
+        <li><strong>Weight:</strong> Proportional to height.</li>
+        <li><strong>English Language Proficiency:</strong> Level III; knowledge of another language is advantageous.</li>
+      </ul>
+
+      <p class="vacancy-sub">Registration Places / Locations:</p>
+      <ul class="vacancy-locations">
+        <li>Adama Science and Technology University, Adama</li>
+        <li>Addis Ababa, Online (application link activated during application period)</li>
+        <li>Ambo University, Ambo</li>
+        <li>Arbaminch University, Arbaminch</li>
+        <li>Bahir Dar University, Bahir Dar</li>
+        <li>Jimma University, Jimma</li>
+        <li>Hawassa Airport, Hawassa</li>
+        <li>University of Gondar, Gondar</li>
+      </ul>
+
+      <p class="vacancy-nb"><strong>N.B:</strong> Bring original supporting documents (8th Grade Ministry Card & Birth Certificate, Grade 12 Certificate, Kebele ID). Applications with false information will be terminated upon discovery.</p>
+      <a onclick="event.preventDefault(); showSection('register');" href="#" class="apply-link">TO APPLY CLICK HERE ↓</a>
     </div>
-
-    <ul class="vacancy-list">
-      <li><strong>Required Educational Qualification:</strong> A minimum of Ethiopian University Entrance Exam Certificate (EUEEC) with a minimum 200 result.</li>
-      <li><strong>Age Limit:</strong> 21–30 years old inclusive.</li>
-      <li><strong>Height:</strong> A minimum of 1.58m and an arm reach of 212cm for female, and a minimum of 1.70m for male.</li>
-      <li><strong>Weight:</strong> Proportional to height.</li>
-      <li><strong>English Language Proficiency:</strong> Level III; knowledge of another language is advantageous.</li>
-    </ul>
-
-    <p class="vacancy-sub">Registration Places / Locations:</p>
-    <ul class="vacancy-locations">
-      <li>Adama Science and Technology University, Adama</li>
-      <li>Addis Ababa, Online (application link activated during application period)</li>
-      <li>Ambo University, Ambo</li>
-      <li>Arbaminch University, Arbaminch</li>
-      <li>Bahir Dar University, Bahir Dar</li>
-      <li>Jimma University, Jimma</li>
-      <li>Hawassa Airport, Hawassa</li>
-      <li>University of Gondar, Gondar</li>
-    </ul>
-
-    <p class="vacancy-nb"><strong>N.B:</strong> Bring original supporting documents (8th Grade Ministry Card & Birth Certificate, Grade 12 Certificate, Kebele ID). Applications with false information will be terminated upon discovery.</p>
-    <a href="#register" class="apply-link">TO APPLY CLICK HERE ↓</a>
   </div>
 
-  <div class="form-wrap" id="register">
+  <div class="form-wrap toggle-section" id="register">
     <h2>Application Form for Local Applicants</h2>
     <p>Fields marked with the position dropdown reflect the openings listed above.</p>
     <form id="regForm">
@@ -554,18 +584,18 @@
 
       <div class="full">
         <label>Birth Date (G.C.)</label>
-        <div style="display:flex; gap:12px;">
-          <select id="dobDay" required>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <select id="dobDay" required style="flex:1; min-width:80px;">
             <option value="">Day</option>
             <script>document.write(Array.from({length:31},(_,i)=>`<option>${i+1}</option>`).join(''))</script>
           </select>
-          <select id="dobMonth" required>
+          <select id="dobMonth" required style="flex:2; min-width:120px;">
             <option value="">Month</option>
             <option>January</option><option>February</option><option>March</option><option>April</option>
             <option>May</option><option>June</option><option>July</option><option>August</option>
             <option>September</option><option>October</option><option>November</option><option>December</option>
           </select>
-          <select id="dobYear" required>
+          <select id="dobYear" required style="flex:1; min-width:90px;">
             <option value="">Year</option>
             <script>document.write(Array.from({length:30},(_,i)=>`<option>${2008-i}</option>`).join(''))</script>
           </select>
@@ -679,7 +709,6 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 <script>
-  // TODO: replace with your Firebase project config (Step 2 below)
   const firebaseConfig = {
     apiKey: "AIzaSyBmHnbVpJa8yZqF_IqtpPuTkBqNxDFD_Ms",
     authDomain: "airlines-form.firebaseapp.com",
@@ -690,6 +719,13 @@
   };
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
+
+  function showSection(id){
+    document.querySelectorAll('.toggle-section').forEach(function(el){ el.style.display = 'none'; });
+    const el = document.getElementById(id);
+    el.style.display = 'block';
+    el.scrollIntoView({behavior:'smooth', block:'start'});
+  }
 </script>
 
 <script>
