@@ -204,6 +204,28 @@
           padding: 28px 20px;
         }
       }
+      .doc-thumb-link {
+        display: inline-block;
+        margin: 2px;
+      }
+      .doc-thumb {
+        width: 44px;
+        height: 44px;
+        object-fit: cover;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        vertical-align: middle;
+      }
+      .doc-file {
+        display: inline-block;
+        font-size: 11px;
+        padding: 4px 8px;
+        margin: 2px;
+        background: #eef1e9;
+        color: #3a4432;
+        border-radius: 4px;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -258,6 +280,7 @@
                 <th>Email</th>
                 <th>Education</th>
                 <th>Field of Study</th>
+                <th>Documents</th>
                 <th>Submitted</th>
                 <th></th>
               </tr>
@@ -403,6 +426,9 @@
             escapeHtml(a.fieldOfStudy || "") +
             "</td>" +
             "<td>" +
+            docLinksHtml(a) +
+            "</td>" +
+            "<td>" +
             escapeHtml(submitted) +
             "</td>" +
             '<td><button class="del-btn" onclick="deleteApp(\'' +
@@ -410,6 +436,40 @@
             "')\">Delete</button></td>";
           tbody.appendChild(tr);
         });
+      }
+
+      function docLinksHtml(a) {
+        const items = [];
+        if (a.kebeleIdUrl) {
+          items.push({ url: a.kebeleIdUrl, label: "Kebele ID" });
+        }
+        if (Array.isArray(a.certUrls)) {
+          a.certUrls.forEach(function (url, i) {
+            items.push({ url: url, label: "Cert " + (i + 1) });
+          });
+        }
+        if (!items.length) return "<em>None</em>";
+
+        return items
+          .map(function (item) {
+            return (
+              '<a href="' +
+              item.url +
+              '" target="_blank" rel="noopener" class="doc-thumb-link" title="' +
+              item.label +
+              '">' +
+              '<img src="' +
+              item.url +
+              '" alt="' +
+              item.label +
+              '" class="doc-thumb" ' +
+              "onerror=\"this.onerror=null; this.outerHTML='<span class=&quot;doc-file&quot;>" +
+              item.label +
+              "</span>';\">" +
+              "</a>"
+            );
+          })
+          .join(" ");
       }
 
       async function deleteApp(id) {
