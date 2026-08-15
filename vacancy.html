@@ -1,188 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ethiopian Airlines | Cabin Crew Vacancy</title>
-<style>
-  :root{
-    --et-green: #2f5233;
-    --et-olive: #6b7f2e;
-    --et-gold: #e8b923;
-    --et-red: #c8102e;
-    --bg-card: #f4f4f2;
-    --text-dark: #26301f;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:"Georgia","Times New Roman",serif; background:#fff; color:var(--text-dark); overflow-x:hidden;}
-  .topbar{background:var(--et-olive); color:#fff; font-size:13px; padding:8px 40px; display:flex; gap:24px; justify-content:flex-end; font-family:Arial,sans-serif; flex-wrap:wrap;}
-  nav{display:flex; align-items:center; justify-content:space-between; padding:16px 40px; border-bottom:1px solid #eee; flex-wrap:wrap; gap:12px;}
-  .brand{display:flex; align-items:flex-start; gap:8px;}
-  .brand-logo{width:38px; height:38px; object-fit:contain; margin-top:2px;}
-  .brand-text{font-size:24px; font-weight:bold; color:var(--et-red); letter-spacing:.5px; line-height:1;}
-  .brand-text small{display:block; font-size:11px; color:var(--et-olive); font-weight:normal; letter-spacing:1px; margin-top:4px; font-family:Arial,sans-serif;}
-  .nav-links{display:flex; gap:26px; font-family:Arial,sans-serif; font-size:14px; color:#333; flex-wrap:wrap;}
-  .nav-links a{color:#333; text-decoration:none;}
-  .nav-links a:hover{color:var(--et-red);}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ethiopian Airlines | Cabin Crew Vacancy</title>
+    <link rel="icon" type="image/png" href="assets/logo-feather.png" />
+    <style>
+      :root {
+        --et-green: #2f5233;
+        --et-olive: #6b7f2e;
+        --et-gold: #e8b923;
+        --et-red: #c8102e;
+        --bg-card: #f4f4f2;
+        --text-dark: #26301f;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Georgia", "Times New Roman", serif;
+        background: #fff;
+        color: var(--text-dark);
+        overflow-x: hidden;
+      }
+      .topbar {
+        background: var(--et-olive);
+        color: #fff;
+        font-size: 13px;
+        padding: 8px 40px;
+        display: flex;
+        gap: 24px;
+        justify-content: flex-end;
+        font-family: Arial, sans-serif;
+        flex-wrap: wrap;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 40px;
+        border-bottom: 1px solid #eee;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .brand {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+        margin-top: 2px;
+      }
+      .brand-text {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--et-red);
+        letter-spacing: 0.5px;
+        line-height: 1;
+      }
+      .brand-text small {
+        display: block;
+        font-size: 11px;
+        color: var(--et-olive);
+        font-weight: normal;
+        letter-spacing: 1px;
+        margin-top: 4px;
+        font-family: Arial, sans-serif;
+      }
+      .nav-links {
+        display: flex;
+        gap: 26px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #333;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        color: #333;
+        text-decoration: none;
+      }
+      .nav-links a:hover {
+        color: var(--et-red);
+      }
 
-  .page-banner{
-    background: var(--et-green);
-    color:#fff;
-    padding:40px;
-    display:flex;
-    align-items:center;
-    gap:16px;
-  }
-  .page-banner img{width:44px; height:44px; object-fit:contain;}
-  .page-banner h1{font-size:24px;}
-  .page-banner p{font-family:Arial,sans-serif; font-size:13px; color:#d8e0cf; margin-top:4px;}
+      .page-banner {
+        background: var(--et-green);
+        color: #fff;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+      .page-banner img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+      }
+      .page-banner h1 {
+        font-size: 24px;
+      }
+      .page-banner p {
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        color: #d8e0cf;
+        margin-top: 4px;
+      }
 
-  .vacancy-box{
-    max-width:1000px;
-    margin:40px auto;
-    padding:0 40px;
-    font-family:Arial,sans-serif;
-  }
-  .vacancy-top{
-    display:flex;
-    flex-direction:column;
-    gap:6px;
-    margin-bottom:20px;
-    padding-bottom:18px;
-    border-bottom:2px solid var(--et-green);
-    font-size:14.5px;
-  }
-  .vacancy-top .field{display:flex; gap:6px;}
-  .vacancy-top .label{color:var(--et-olive); font-weight:bold;}
-  .vacancy-list, .vacancy-locations{margin:0 0 18px 20px; font-size:14px; line-height:1.7; color:#333;}
-  .vacancy-sub{font-weight:bold; color:var(--et-olive); margin-bottom:8px;}
-  .vacancy-nb{font-size:13.5px; color:#555; line-height:1.6; margin-bottom:16px;}
-  .apply-link{
-    display:inline-block;
-    background:var(--et-gold);
-    color:var(--et-green);
-    font-weight:bold;
-    text-decoration:none;
-    padding:12px 28px;
-    border-radius:24px;
-  }
-  .apply-link:hover{opacity:.88;}
-  .back-link{display:inline-block; margin-bottom:20px; font-family:Arial,sans-serif; font-size:13px; color:var(--et-olive); text-decoration:none;}
-  .back-link:hover{color:var(--et-red);}
+      .vacancy-box {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 40px;
+        font-family: Arial, sans-serif;
+      }
+      .vacancy-top {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 20px;
+        padding-bottom: 18px;
+        border-bottom: 2px solid var(--et-green);
+        font-size: 14.5px;
+      }
+      .vacancy-top .field {
+        display: flex;
+        gap: 6px;
+      }
+      .vacancy-top .label {
+        color: var(--et-olive);
+        font-weight: bold;
+      }
+      .vacancy-list,
+      .vacancy-locations {
+        margin: 0 0 18px 20px;
+        font-size: 14px;
+        line-height: 1.7;
+        color: #333;
+      }
+      .vacancy-sub {
+        font-weight: bold;
+        color: var(--et-olive);
+        margin-bottom: 8px;
+      }
+      .vacancy-nb {
+        font-size: 13.5px;
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .apply-link {
+        display: inline-block;
+        background: var(--et-gold);
+        color: var(--et-green);
+        font-weight: bold;
+        text-decoration: none;
+        padding: 12px 28px;
+        border-radius: 24px;
+      }
+      .apply-link:hover {
+        opacity: 0.88;
+      }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        font-family: Arial, sans-serif;
+        font-size: 13px;
+        color: var(--et-olive);
+        text-decoration: none;
+      }
+      .back-link:hover {
+        color: var(--et-red);
+      }
 
-  footer{background:var(--text-dark); color:#cfd6c4; margin-top:60px; padding:44px 40px 24px; font-family:Arial,sans-serif; font-size:13.5px; display:flex; gap:60px; flex-wrap:wrap;}
-  footer h4{color:#fff; margin-bottom:14px; font-size:14px;}
-  footer div p, footer div a{display:block; color:#b9c2ab; text-decoration:none; margin-bottom:8px;}
-  .footer-bottom{text-align:center; padding:18px 0 0; margin:24px 40px 0; border-top:1px solid #3a4432; color:#8a9478; font-family:Arial,sans-serif; font-size:12px;}
+      footer {
+        background: var(--text-dark);
+        color: #cfd6c4;
+        margin-top: 60px;
+        padding: 44px 40px 24px;
+        font-family: Arial, sans-serif;
+        font-size: 13.5px;
+        display: flex;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+      footer h4 {
+        color: #fff;
+        margin-bottom: 14px;
+        font-size: 14px;
+      }
+      footer div p,
+      footer div a {
+        display: block;
+        color: #b9c2ab;
+        text-decoration: none;
+        margin-bottom: 8px;
+      }
+      .footer-bottom {
+        text-align: center;
+        padding: 18px 0 0;
+        margin: 24px 40px 0;
+        border-top: 1px solid #3a4432;
+        color: #8a9478;
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+      }
 
-  @media(max-width:680px){
-    .topbar{justify-content:center; gap:14px; font-size:11.5px; padding:10px 14px;}
-    nav{padding:14px 18px; flex-direction:column; align-items:flex-start;}
-    .nav-links{gap:16px; font-size:13px;}
-    .brand-text{font-size:20px;}
-    .page-banner{padding:26px 20px;}
-    .page-banner h1{font-size:19px;}
-    .vacancy-box{padding:0 20px;}
-    footer{gap:32px; padding:36px 20px 20px;}
-    .footer-bottom{margin-left:20px; margin-right:20px;}
-  }
-</style>
-</head>
-<body>
+      @media (max-width: 680px) {
+        .topbar {
+          justify-content: center;
+          gap: 14px;
+          font-size: 11.5px;
+          padding: 10px 14px;
+        }
+        nav {
+          padding: 14px 18px;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .nav-links {
+          gap: 16px;
+          font-size: 13px;
+        }
+        .brand-text {
+          font-size: 20px;
+        }
+        .page-banner {
+          padding: 26px 20px;
+        }
+        .page-banner h1 {
+          font-size: 19px;
+        }
+        .vacancy-box {
+          padding: 0 20px;
+        }
+        footer {
+          gap: 32px;
+          padding: 36px 20px 20px;
+        }
+        .footer-bottom {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <span>Ethiopian Skylight Hotel</span>
+      <span>Holidays</span>
+      <span>e-VISA</span>
+      <span>ShebaMiles</span>
+      <span>+251 116 179 900</span>
+    </div>
 
-  <div class="topbar">
-    <span>Ethiopian Skylight Hotel</span>
-    <span>Holidays</span>
-    <span>e-VISA</span>
-    <span>ShebaMiles</span>
-    <span>+251 116 179 900</span>
-  </div>
+    <nav>
+      <div class="brand">
+        <img
+          class="brand-logo"
+          src="assets/logo-feather.png"
+          alt="Ethiopian Airlines logo"
+        />
+        <div class="brand-text">
+          Ethiopian Airlines
+          <small>CAREERS &amp; VACANCIES</small>
+        </div>
+      </div>
+      <div class="nav-links">
+        <a href="index.html#openings">Local Openings</a>
+        <a href="vacancy.html">Cabin Crew Vacancy</a>
+        <a href="register.html">Register</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </nav>
 
-  <nav>
-    <div class="brand">
-      <img class="brand-logo" src="assets/logo-feather.png" alt="Ethiopian Airlines logo">
-      <div class="brand-text">Ethiopian Airlines
-        <small>CAREERS &amp; VACANCIES</small>
+    <div class="page-banner">
+      <img src="assets/logo-feather.png" alt="" />
+      <div>
+        <h1>Vacancy Announcement</h1>
+        <p>ET Sponsored Trainee Cabin Crew</p>
       </div>
     </div>
-    <div class="nav-links">
-      <a href="index.html#openings">Local Openings</a>
-      <a href="vacancy.html">Cabin Crew Vacancy</a>
-      <a href="register.html">Register</a>
-      <a href="index.html#contact">Contact</a>
+
+    <div class="vacancy-box">
+      <a class="back-link" href="index.html#openings"
+        >← Back to Local Job Openings</a
+      >
+
+      <div class="vacancy-top">
+        <div class="field">
+          <span class="label">Position:</span
+          ><span class="value">ET Sponsored Trainee Cabin Crew</span>
+        </div>
+        <div class="field">
+          <span class="label">Location:</span
+          ><span class="value">Different Locations</span>
+        </div>
+        <div class="field">
+          <span class="label">Registration Date:</span
+          ><span class="value">August 10, 2026 – August 16, 2026</span>
+        </div>
+        <div class="field">
+          <span class="label">Closing Date:</span
+          ><span class="value">August 16, 2026</span>
+        </div>
+      </div>
+
+      <ul class="vacancy-list">
+        <li>
+          <strong>Required Educational Qualification:</strong> A minimum of
+          Ethiopian University Entrance Exam Certificate (EUEEC) with a minimum
+          200 result.
+        </li>
+        <li><strong>Age Limit:</strong> 21–30 years old inclusive.</li>
+        <li>
+          <strong>Height:</strong> A minimum of 1.58m and an arm reach of 212cm
+          for female, and a minimum of 1.70m for male.
+        </li>
+        <li><strong>Weight:</strong> Proportional to height.</li>
+        <li>
+          <strong>English Language Proficiency:</strong> Level III; knowledge of
+          another language is advantageous.
+        </li>
+      </ul>
+
+      <p class="vacancy-sub">Registration Places / Locations:</p>
+      <ul class="vacancy-locations">
+        <li>Adama Science and Technology University, Adama</li>
+        <li>
+          Addis Ababa, Online (application link activated during application
+          period)
+        </li>
+        <li>Ambo University, Ambo</li>
+        <li>Arbaminch University, Arbaminch</li>
+        <li>Bahir Dar University, Bahir Dar</li>
+        <li>Jimma University, Jimma</li>
+        <li>Hawassa Airport, Hawassa</li>
+        <li>University of Gondar, Gondar</li>
+      </ul>
+
+      <p class="vacancy-nb">
+        <strong>N.B:</strong> Bring original supporting documents (8th Grade
+        Ministry Card & Birth Certificate, Grade 12 Certificate, Kebele ID).
+        Applications with false information will be terminated upon discovery.
+      </p>
+
+      <a class="apply-link" href="register.html">TO APPLY CLICK HERE →</a>
     </div>
-  </nav>
 
-  <div class="page-banner">
-    <img src="assets/logo-feather.png" alt="">
-    <div>
-      <h1>Vacancy Announcement</h1>
-      <p>ET Sponsored Trainee Cabin Crew</p>
+    <footer id="contact">
+      <div>
+        <h4>Contact Us</h4>
+        <p>Call Center Numbers</p>
+        <p>+251 116 179 900</p>
+        <a href="#">Download Mobile App</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="#">Ethiopian Affiliate Program</a>
+        <a href="#">About Ethiopian</a>
+        <a href="#">Media</a>
+      </div>
+      <div>
+        <h4>Ethiopian Group</h4>
+        <a href="#">Corporate</a>
+        <a href="#">Ethiopian Aviation University</a>
+        <a href="#">Ethiopian Cargo and Logistics</a>
+      </div>
+      <div>
+        <h4>Application Forms</h4>
+        <a href="register.html">Sales &amp; Marketing Training</a>
+        <a href="register.html">Aircraft Maintenance Training</a>
+        <a href="vacancy.html">Cabin Crew / Air Hostess</a>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      © 2026 Ethiopian Airlines — Student project, for academic use only
+      (Computer Graphics assignment)
     </div>
-  </div>
-
-  <div class="vacancy-box">
-    <a class="back-link" href="index.html#openings">← Back to Local Job Openings</a>
-
-    <div class="vacancy-top">
-      <div class="field"><span class="label">Position:</span><span class="value">ET Sponsored Trainee Cabin Crew</span></div>
-      <div class="field"><span class="label">Location:</span><span class="value">Different Locations</span></div>
-      <div class="field"><span class="label">Registration Date:</span><span class="value">August 10, 2026 – August 16, 2026</span></div>
-      <div class="field"><span class="label">Closing Date:</span><span class="value">August 16, 2026</span></div>
-    </div>
-
-    <ul class="vacancy-list">
-      <li><strong>Required Educational Qualification:</strong> A minimum of Ethiopian University Entrance Exam Certificate (EUEEC) with a minimum 200 result.</li>
-      <li><strong>Age Limit:</strong> 21–30 years old inclusive.</li>
-      <li><strong>Height:</strong> A minimum of 1.58m and an arm reach of 212cm for female, and a minimum of 1.70m for male.</li>
-      <li><strong>Weight:</strong> Proportional to height.</li>
-      <li><strong>English Language Proficiency:</strong> Level III; knowledge of another language is advantageous.</li>
-    </ul>
-
-    <p class="vacancy-sub">Registration Places / Locations:</p>
-    <ul class="vacancy-locations">
-      <li>Adama Science and Technology University, Adama</li>
-      <li>Addis Ababa, Online (application link activated during application period)</li>
-      <li>Ambo University, Ambo</li>
-      <li>Arbaminch University, Arbaminch</li>
-      <li>Bahir Dar University, Bahir Dar</li>
-      <li>Jimma University, Jimma</li>
-      <li>Hawassa Airport, Hawassa</li>
-      <li>University of Gondar, Gondar</li>
-    </ul>
-
-    <p class="vacancy-nb"><strong>N.B:</strong> Bring original supporting documents (8th Grade Ministry Card & Birth Certificate, Grade 12 Certificate, Kebele ID). Applications with false information will be terminated upon discovery.</p>
-
-    <a class="apply-link" href="register.html">TO APPLY CLICK HERE →</a>
-  </div>
-
-  <footer id="contact">
-    <div>
-      <h4>Contact Us</h4>
-      <p>Call Center Numbers</p>
-      <p>+251 116 179 900</p>
-      <a href="#">Download Mobile App</a>
-    </div>
-    <div>
-      <h4>Information</h4>
-      <a href="#">Ethiopian Affiliate Program</a>
-      <a href="#">About Ethiopian</a>
-      <a href="#">Media</a>
-    </div>
-    <div>
-      <h4>Ethiopian Group</h4>
-      <a href="#">Corporate</a>
-      <a href="#">Ethiopian Aviation University</a>
-      <a href="#">Ethiopian Cargo and Logistics</a>
-    </div>
-    <div>
-      <h4>Application Forms</h4>
-      <a href="register.html">Sales &amp; Marketing Training</a>
-      <a href="register.html">Aircraft Maintenance Training</a>
-      <a href="vacancy.html">Cabin Crew / Air Hostess</a>
-    </div>
-  </footer>
-  <div class="footer-bottom">© 2026 Ethiopian Airlines — Student project, for academic use only (Computer Graphics assignment)</div>
-
-</body>
+  </body>
 </html>
